@@ -6,9 +6,7 @@ const cookieParser=require('cookie-parser')
 var cors = require('cors');
 const app = express();
 const corsOptions = {
-  origin: [
-    "http://localhost:3031",
-  ],
+  origin: "*",
   credentials: true,  // Allow credentials (cookies)
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
