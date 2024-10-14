@@ -1,0 +1,64 @@
+### 1. Penilaian Capaian Pembelajaran (Skala 1-100)
+
+| Kriteria              | Penilaian | Alasan                                                                       |
+|----------------------|-----------|------------------------------------------------------------------------------|
+| Relevansi            | 25        | Capaian pembelajaran relevan dengan tujuan pembelajaran di mata kuliah.     |
+| Kejelasan Rumusan    | 20        | Rumusan cukup jelas, namun bisa lebih spesifik untuk konteks tertentu.       |
+| Keterukuran          | 25        | Keterukuran baik, meski lebih detail dalam pengukuran dapat dilakukan.      |
+| Kesesuaian dengan Taksonomi Bloom | 30    | Mencakup aspek kognitif yang baik, banyak fokus pada analisis dan penilaian. |
+
+**Total Skor** = 25 + 20 + 25 + 30 = ***100 (Relevansi 100)***
+
+### 2. Capaian Pembelajaran dari Materi Pembelajaran
+
+Capaian pembelajaran dari materi yang diberikan dapat dinilai tinggi, dengan baiknya penjelasan mengenai komponen utama komputer dan bagaimana mereka saling berinteraksi. Hal ini mencakup pemahaman tentang CPU, memori, dan perangkat I/O, yang merupakan dasar untuk menguasai arsitektur komputer.
+
+**Capaian Materi**: ***80*** (terkait pemahaman komprehensif)
+
+### 3. Capaian Pembelajaran pada Soal Tugas
+
+Soal tugas dirancang untuk mengukur pemahaman mahasiswa tentang komponen CPU, memori, dan perangkat I/O dengan baik. Soal membutuhkan analisis mendalam dan aplikasi dari konsep yang diajarkan.
+
+**Capaian Soal**: ***85*** (Mayoritas mahasiswa mampu menganalisis dengan baik, meskipun ada yang terlalu umum)
+
+### 4. Penilaian untuk Masing-Masing Mahasiswa dan Alasannya
+
+Berikut penilaian untuk beberapa mahasiswa:
+
+| Nama Mahasiswa                     | NIM          | Nilai | Alasan                                                                                             |
+|------------------------------------|--------------|-------|---------------------------------------------------------------------------------------------------|
+| Jonathan Erik Maruli Tua           | 2110101026   | 70    | Menjawab dengan umumnya; kurang mendalam dalam analisis.                                         |
+| Muhammad                            | 2110101031   | 75    | Bagus dalam penjelasan tetapi kurang pada contoh konkret.                                         |
+| Wesley Maximillian Lay             | 2410101001   | 60    | Penjelasan cenderung mirip dengan struktur, kurang inovasi dan contoh.                            |
+| Jovan Vito Viani                   | 2410101002   | 65    | Mandapatkan penjelasan, namun tidak ada contoh mendalam yang menguatkan.                          |
+| Rhifqi Syahputra Priyambodo       | 2410101003   | 68    | Memberikan perspektif yang baik tetapi kurang detail pada aspek interaksi.                        |
+| Bryan Chandra                      | 2410101004   | 82    | Penjelasan mendalam dan relevan; analisis yang baik.                                             |
+| Axel Fabiano                       | 2410101007   | 72    | Jawaban cukup jelas, tetapi bisa lebih analitis.                                                 |
+| Bentley Arshavin                   | 2410101006   | 80    | Paham dengan penggunaan terminologi dan menjelaskan dengan baik.                                  |
+| Ceeley Richela                    | 2410101008   | 75    | Menyediakan penjelasan yang baik tetapi tidak menonjol dalam dua analisis.                       |
+| Cyril Natasha Setiawan            | 2410101009   | 74    | Baik di penjelasan, tetapi struktur dapat ditingkatkan.                                          |
+| ...                                | ...          | ...   | ...                                                                                               |
+
+### 5. Identifikasi Persentase Capaian Pembelajaran yang Belum Dikuasai
+
+Berdasarkan analisis yang dilakukan, sebagian besar mahasiswa mengalami kesulitan dalam memberikan analisis mendalam dan contoh konkret. 
+
+Di bawah ini adalah representasi visual data yang menunjukkan persentase capaian pembelajaran:
+
+| Kategori               | Persentase |
+|-----------------------|------------|
+| Memahami CPU          | 20%        |
+| Memahami Memori       | 25%        |
+| Interaksi I/O         | 30%        |
+| Analisis Mendalam     | 45%        |
+
+### 6. Usulan Perbaikan Pembelajaran
+
+**Usulan**: 
+1. **Praktikum dan Simulasi**: Menyediakan praktikum yang fokus pada aplikasi nyata dari komponen CPU, memori, dan I/O. Ini dapat membantu mahasiswa memahami konsep dengan lebih baik.
+2. **Diskusi Terstruktur**: Mengadakan sesi diskusi interaktif di kelas mengenai materi yang diajarkan, dengan penekanan pada contoh konkret dan penerapan dalam kasus nyata.
+3. **Tugaskan Proyek Kelompok**: Proyek di mana mahasiswa harus merancang dan menjelaskan sistem komputer sederhana dapat membantu memperdalam pemahaman mereka.
+4. **Uji Pengetahuan Sebelumnya**: Melakukan kuis ringan sebelum memulai setiap sesi untuk memastikan mahasiswa mempersiapkan diri dengan baik dan memahami konsep dasar.
+5. **Media Pembelajaran Interaktif**: Menggunakan video atau simulasi interaktif untuk membantu visualisasi dari fungsi dan interaksi komponen komputer.
+
+Dengan demikian, langkah-langkah difokuskan pada meningkatkan pemahaman analitis dan penerapan praktis dari rangkaian pembelajaran.

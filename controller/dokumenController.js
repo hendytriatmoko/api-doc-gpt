@@ -1,0 +1,347 @@
+const json = require('body-parser');
+const modelVpr = require('../model/vprModel');
+const fs = require('fs');
+const path = require('path');
+const moment = require('moment')
+const pdfParse = require('pdf-parse');
+const Tesseract = require('tesseract.js');
+const { Document } = require('docx');
+const mammoth = require('mammoth');
+const db = require('../database/config');
+// Import OpenAI library
+const OpenAI = require('openai');
+const { promisify } = require('util');
+
+// Inisialisasi OpenAI dengan API Key
+const openai = new OpenAI({
+    apiKey: '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' // Ganti dengan API Key Anda
+});
+
+// async function postOcrDokumen(req,res){ 
+//     return res.status(200).json(req.query);
+// }
+
+async function postOcrDokumen (req, res) {
+    // Mengakses file yang diunggah
+    const file = req.file;
+    const { id_file, user_id } = req.body;
+    
+    if (!file) {
+        return res.status(400).send({ message: 'No file uploaded.' });
+    }
+
+    const filePath = path.join(__dirname, '../file/source', file.filename);
+    const fileExtension = path.extname(file.filename).toLowerCase();
+    let extractedText = '';
+
+
+    try{
+        if (fileExtension === '.pdf') {
+            // Ekstraksi teks dari PDF
+            const dataBuffer = fs.readFileSync(filePath);
+            const pdfData = await pdfParse(dataBuffer);
+            extractedText = pdfData.text;
+
+        } else if (['.jpg', '.jpeg', '.png', '.tiff'].includes(fileExtension)) {
+            // OCR untuk gambar
+            const { data: { text } } = await Tesseract.recognize(filePath, 'eng');
+            extractedText = text;
+
+        } else if (fileExtension === '.docx') {
+            // Ekstraksi teks dari DOCX
+            const result = await mammoth.extractRawText({ path: filePath });
+            extractedText = result.value;
+
+        } else if (fileExtension === '.txt') {
+            // Membaca teks langsung dari file TXT
+            extractedText = fs.readFileSync(filePath, 'utf8');
+
+        } else {
+            return res.status(400).send({ message: 'Unsupported file format.' });
+        }
+
+        extractedText = extractedText.replace(/\n{2,}/g, '\n').trim();
+        const outputFilePath = path.join(__dirname, '../file/ekstrak', `${path.basename(file.filename, fileExtension)}_extracted.txt`);
+        fs.writeFileSync(outputFilePath, extractedText.trim(), 'utf8');
+
+
+        // Contoh: Mengembalikan respon dengan informasi file
+        res.status(200).send({
+            message: 'File uploaded successfully.',
+            originalname: file.originalname,  // Nama file asli sebelum diubah
+            filename: file.filename,  // Nama file yang telah diubah
+            filepath: path.join(__dirname, '../file/source', file.filename),
+            extractedText: extractedText.trim() 
+        });
+    } catch (error) {
+        console.error('Error extracting text:', error);
+        res.status(500).send({ message: 'Error extracting text from the document.' });
+    }
+
+
+    // Anda dapat menambahkan kode untuk memproses file OCR di sini
+};
+
+
+async function postOcrDokumenAll (req, res) {
+    const { user_id } = req.body;
+    const uploadedFiles = req.files;
+
+    let fileNames = [
+    ];
+
+    // Mendapatkan nama file dari uploadedFiles
+    if (uploadedFiles) {
+        // Melakukan iterasi untuk setiap field file (misal: file1, file2, dll.)
+        for (let field in uploadedFiles) {
+            for (const file of uploadedFiles[field]){
+            // uploadedFiles[field].forEach(file => {
+                const filePath = path.join(__dirname, '../file/source', file.filename);
+                const fileExtension = path.extname(file.filename).toLowerCase();
+                let extractedText = '';
+                try{
+                    if (fileExtension === '.pdf') {
+                        // Ekstraksi teks dari PDF
+                        const dataBuffer = fs.readFileSync(filePath);
+                        const pdfData = await pdfParse(dataBuffer);
+                        extractedText = pdfData.text;
+            
+                    } else if (['.jpg', '.jpeg', '.png', '.tiff'].includes(fileExtension)) {
+                        // OCR untuk gambar
+                        const { data: { text } } = await Tesseract.recognize(filePath, 'eng');
+                        extractedText = text;
+            
+                    } else if (fileExtension === '.docx') {
+                        // Ekstraksi teks dari DOCX
+                        const result = await mammoth.extractRawText({ path: filePath });
+                        extractedText = result.value;
+            
+                    } else if (fileExtension === '.txt') {
+                        // Membaca teks langsung dari file TXT
+                        extractedText = fs.readFileSync(filePath, 'utf8');
+            
+                    } else {
+                        return res.status(400).send({ message: 'Unsupported file format.' });
+                    }
+            
+                    extractedText = extractedText.replace(/\n{2,}/g, '\n').trim();
+                    fileNames.push(
+                        {
+                            filename: file.filename,
+                            teks: extractedText
+                        }                        
+                    )
+                    // const outputFilePath = path.join(__dirname, '../file/ekstrak', `${path.basename(file.filename, fileExtension)}_extracted.txt`);
+                    // fs.writeFileSync(outputFilePath, extractedText.trim(), 'utf8');
+                }catch(error){
+                    console.error('Error extracting text:', error);
+                    res.status(500).send({ message: 'Error extracting text from the document.' });
+                }
+
+                // fileNames.push(file.filename); // Menyimpan nama file ke array
+            };
+        }
+    }
+
+    let dataPrompt = `
+    berikut adalah capaian pembelajaran
+    ${fileNames[0].teks ? fileNames[0].teks : '-'}
+
+    berikut adalah materi pembelajaran
+    ${fileNames[1].teks ? fileNames[1].teks : '-'}
+
+    berikut adalah soal tugas pembelajaran
+    ${fileNames[2].teks ? fileNames[2].teks : '-'}
+
+    berikut adalah jawaban mahasiswa
+    ${fileNames[3].teks ? fileNames[3].teks : '-'}
+    
+    berikut adalah yang akan saya minta
+    1. berikan nilai skala 1-100 capaian pembelajarannya dengan aspek relevansi,kejelasan rumusan, keterukuran, kesesuaian dengan taksonomi bloom
+    2. ukur capaian pembelajaran dari materi pembelajaran diatas
+    3. ukur capaian pembelajaran pada soal tugas
+    4. berikan penilaian 1-100 untuk masing masing mahasiswa pada jawaban tugas
+    5. identifikasi persentase capaian pembelajaran yang belum dikuasai oleh sebagian besar mahasiswa dalam grafik batang
+    6. berikan usulan perbaikan pembelajaran relevan pada instruktur terkait capaian pembelajaran yang belum dikuasai sebagian besar mahasiswa
+    `
+    let timestamp = moment().format('YYYYMMDDhhmmss');
+    let fileekstrak = `${user_id}-file_extracted${timestamp}.txt`
+    const outputFilePath = path.join(__dirname, '../file/ekstrak', fileekstrak);
+    fs.writeFileSync(outputFilePath, dataPrompt.trim(), 'utf8');
+
+
+    try{
+        const query = 'INSERT INTO t_file (id_user, file1, file2, file3, file4, file_prompt) VALUES (?, ?, ?,?, ?, ?)';
+        db.query(query, [
+                user_id, 
+                fileNames[0].filename, 
+                fileNames[1].filename, 
+                fileNames[2].filename, 
+                fileNames[3].filename, 
+                fileekstrak
+            ], (err, result) => {
+            if (err) {
+                return res.status(500).json({ error: err.message });
+            }
+    
+            res.status(200).send({
+                message: 'File uploaded successfully.',
+                user_id: user_id,
+                file: fileNames
+            });
+        });
+    
+
+    }catch(error){
+        console.error('Error extracting text:', error);
+        res.status(500).send({ message: 'Error upload doc from the document.' });
+    }
+    
+}
+
+async function getDokumenAll (req, res){
+    const { id_user } = req.query 
+    // console.log('req', req.query)
+
+    try{
+        const query = 'select * from t_file where id_user = ?';
+        db.query(query, [id_user], (err, result) => {
+            if (err) {
+                return res.status(500).json({ error: err.message });
+            }
+
+            
+
+            res.status(200).send({
+                message: 'success.',
+                id_user: id_user,
+                file: result
+            });
+        })
+        
+    }catch(error){
+        res.status(500).send({ message: 'Error get the document.' });
+    }
+
+    
+}
+
+// async function postgpt (req, res){
+//     const { id_file } = req.body 
+
+//     try{
+//         const query = 'select file_prompt from t_file where id = ?';
+//         db.query(query, [id_file], (err, result) => {
+//             if (err) {
+//                 return res.status(500).json({ error: err.message });
+//             }
+
+//             const filePath = path.join(__dirname, '../file/ekstrak', result[0].file_prompt);
+//             var extractedText = fs.readFileSync(filePath, 'utf8');
+//             let output = await generateGpt(extractedText)
+//             res.status(200).send({
+//                 message: 'success.',
+//                 id_file: id_file,
+//                 result: output
+//             });
+
+            
+//         })
+        
+//     }catch(error){
+//         res.status(500).send({ message: 'Error get the document.' });
+//     }
+
+    
+// }
+
+// async function generateGpt(text) {
+//     try {
+//         // Mengirimkan permintaan ke model GPT
+//         const outputStream = fs.createWriteStream("output.txt");
+
+//         const stream = await openai.chat.completions.create({
+//             model: "gpt-4o-mini", // Pastikan menggunakan model yang valid
+//             messages: [{ role: "user", content: text }],
+//             stream: true,
+//         }, { responseType: 'stream' });
+
+//         // Menggunakan streaming untuk menampilkan respons
+//         let output = ''
+//         for await (const chunk of stream) {
+//             output += chunk.choices[0]?.delta?.content || "";
+//             // process.stdout.write(chunk.choices[0]?.delta?.content || "")
+//         }
+//         return output;
+        
+
+//     } catch (error) {
+//         console.error("Terjadi kesalahan:", error);
+//     }
+// }
+
+async function postgpt(req, res) {
+    const { id_file } = req.body;
+
+    try {
+        // Mengubah db.query menjadi versi async menggunakan promisify
+        const queryAsync = promisify(db.query).bind(db);
+        
+        // Mendapatkan file_prompt berdasarkan id_file
+        const query = 'SELECT file_prompt FROM t_file WHERE id = ?';
+        const result = await queryAsync(query, [id_file]);
+
+        if (result.length === 0) {
+            return res.status(404).json({ message: 'File not found.' });
+        }
+
+        // Mendapatkan path file dan membaca teks yang diekstraksi
+        const filePath = path.join(__dirname, '../file/ekstrak', result[0].file_prompt);
+        var extractedText = fs.readFileSync(filePath, 'utf8');
+
+        // Memanggil fungsi generateGpt untuk menghasilkan output
+        let output = await generateGpt(extractedText);
+
+        let timestamp = moment().format('YYYYMMDDhhmmss');
+        let fileresult = `${id_file}-file_result${timestamp}.txt`
+        const outputFilePath = path.join(__dirname, '../file/result', fileresult);
+        fs.writeFileSync(outputFilePath, output.trim(), 'utf8');
+
+        // Mengirimkan respons sukses
+        res.status(200).send({
+            message: 'success',
+            id_file: id_file,
+            result: output
+        });
+
+    } catch (error) {
+        console.error('Error processing the request:', error);
+        res.status(500).send({ message: 'Error getting the document.' });
+    }
+}
+
+async function generateGpt(text) {
+    try {
+        // Mengirimkan permintaan ke model GPT
+        const stream = await openai.chat.completions.create({
+            model: "gpt-4o-mini", // Pastikan menggunakan model yang valid
+            messages: [{ role: "user", content: text }],
+            stream: true,
+        }, { responseType: 'stream' });
+
+        // Menggunakan streaming untuk menghasilkan respons
+        let output = '';
+        for await (const chunk of stream) {
+            output += chunk.choices[0]?.delta?.content || "";
+        }
+        return output;
+
+    } catch (error) {
+        console.error("Terjadi kesalahan saat generate GPT:", error);
+        throw new Error('Error generating GPT output.');
+    }
+}
+
+module.exports = { 
+    postOcrDokumen,postOcrDokumenAll,getDokumenAll,postgpt
+};
