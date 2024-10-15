@@ -3,6 +3,7 @@ const modelVpr = require('../model/vprModel');
 const fs = require('fs');
 const path = require('path');
 const moment = require('moment')
+require('dotenv').config();
 const pdfParse = require('pdf-parse');
 const Tesseract = require('tesseract.js');
 const { Document } = require('docx');
@@ -14,8 +15,8 @@ const { promisify } = require('util');
 
 // Inisialisasi OpenAI dengan API Key
 const openai = new OpenAI({
-    apiKey: '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' // Ganti dengan API Key Anda
-});
+    apiKey: process.env.key
+    });
 
 // async function postOcrDokumen(req,res){ 
 //     return res.status(200).json(req.query);

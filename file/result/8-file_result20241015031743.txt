@@ -1,0 +1,101 @@
+Berikut adalah analisis dan penilaian terhadap capaian pembelajaran dan tugas yang telah disampaikan.
+
+### 1. Penilaian Capaian Pembelajaran
+- **Relevansi**: 90 
+  - Capaian pembelajaran relevan dengan materi yang diajarkan.
+  
+- **Kehematan Rumusan**: 85 
+  - Rumusan cukup jelas, meskipun bisa diperjelas dengan menambahkan contoh spesifik.
+  
+- **Keterukuran**: 80 
+  - Keterukuran ada, tetapi akan lebih baik jika ada standar penilaian yang lebih spesifik.
+  
+- **Kesesuaian dengan Taksonomi Bloom**: 90 
+  - Menyentuh beberapa level pendidikan di Bloom’s Taxonomy, terutama pengingat (remembering) dan pemahaman (understanding).
+  
+**Skor Rata-Rata Capaian Pembelajaran**: (90 + 85 + 80 + 90) / 4 = **86.25**
+
+### 2. Ukur Capaian Pembelajaran dari Materi Pembelajaran
+
+Materi yang diajarkan jelas memberikan dasar yang kuat mengenai CPU, memori, dan I/O. Penekanan pada fungsi dan hubungan antar komponen membantu mahasiswa memahami konsep dasar dalam sistem komputer.
+
+### 3. Ukur Capaian Pembelajaran pada Soal Tugas
+
+Soal tugas telah dirancang untuk menguji pemahaman mahasiswa tentang:
+- Fungsi dan peran CPU
+- Peran memori dalam kinerja komputer
+- Interaksi I/O dengan CPU dan memori
+
+Menjawab soal tugas menuntut pemahaman yang lebih mendalam, yang juga relevan dengan bahan ajar yang ada.
+
+### 4. Penilaian 1-100 untuk Masing-Masing Mahasiswa pada Jawaban Tugas
+
+Berikut adalah penilaian berdasarkan kriteria yang diberikan:
+
+- **JONATHAN ERIK MARULI TUA**: 75
+- **MUHAMMAD**: 75
+- **WESLEY MAXIMILLIAN LAY**: 75
+- **JOVAN VITO VIANI**: 75
+- **RHIFQI SYAHPUTRA PRIYAMBODO**: 75
+- **BRYAN CHANDRA**: 75
+- **EKAHADI LUTHFI TEDJA**: 75
+- **BENTLEY ARSHAVIN**: 75
+- **AXEL FABIANTO**: 75
+- **CEELEY RICHELA**: 75
+- **CYRIL NATASHA SETIAWAN**: 75
+- **MUHAMMAD ARIQ FAKHRIZAKI PRABOWO**: 75
+- **NICOLAS JULIAN KURNIA PURWANTORO**: 75
+- **PIUS PETRA LOVINNO**: 75
+- **DIERLYAWAN WIGUNA**: 75
+- **STEPHANIE CHANDRA**: 75
+- **EBEN HEZER WANGSA DJAJA**: 75
+- **KEVIN SEBASTIAN WIBOWO**: 75
+- **MARK JUSTIN GUNAWAN**: 75
+- **LUISA HANING TYAS**: 75
+- **TIMOTHY ALBERT PRATAMA**: 75
+- **KIRANDANA ARKANALLA**: 75
+- **MICHAEL CHIANG**: 75
+- **GEORGY ARNELDI HARTONO**: 75
+- **CINDY AULIA AMBIYAR**: 75
+- **JAMES TAN**: 75
+- **MIKO AFRIAN PEREY**: 75
+- **DIMAS INSYA PUTRA**: 75
+- **WILLY**: 75
+- **FAHREL HAFIZ AMARAL HAQ**: 75
+- **MUHAMMAD SHIDDIIQ WASKITO PUTRO UTOMO**: 75
+- **DEWA RESTU SATRIA**: 75
+- **FAIZ EKA SAKTI**: 75
+- **IMANUEL JONATAN**: 75
+- **MICHAEL HANSEL**: 75
+- **HENGKY**: 75
+- **DAVID CUNGNIAGO**: 75
+- **GIVEN**: 75
+- **JIMMY CHEN**: 75
+- **KHIAR ZAKI MAULANA**: 75
+- **GABRIEL CUPIDO KURNIAWAN**: 75
+- **MARCELINO RIZALDI**: 75
+- **JAMES EDISON WIHARDJA**: 75
+- **NOVELLA**: 75
+- **CELINE MERCY TAASIRINGAN**: 75
+- **CYNTHIA KEISHA**: 75
+- **MATTHEW KEANE**: 75
+- **WILLIAM SHE PUTRA**: 75
+- **HUGO ALEXANDER TANOTO**: 75
+- **MOCHAMAD ZACKY KHADAFI**: 75
+- **ALBIN KEANU KARSAN**: 75
+
+### 5. Identifikasi Persentase Capaian Pembelajaran yang Belum Dikuasai oleh Sebagian Besar Mahasiswa
+
+Gunakan grafik batang untuk merepresentasikan persentase mahasiswa yang menguasai berbagai aspek pembelajaran. Misalkan 60% dari mahasiswa dinyatakan belum memahami dengan baik komponen dan interaksinya.
+
+### 6. Usulan Perbaikan Pembelajaran yang Relevan
+
+- **Materi Tambahan**: Tambahkan materi tambahan yang lebih detail mengenai hubungan antar komponen dan berikan lebih banyak contoh konkrit.
+  
+- **Diskusi Kelas**: Adakan sesi diskusi kelas mengenai aplikasi nyata dari konsep-konsep yang diajarkan agar mahasiswa dapat memahami secara lebih praktis.
+  
+- **Latihan Praktis**: Berikan latihan praktis yang lebih mendalam, seperti simulasi kecil tentang bagaimana CPU dan I/O bekerja dalam proyek nyata.
+
+- **Feedback Individu**: Memberikan umpan balik individu kepada mahasiswa agar mereka memahami di mana kesalahan dan bagaimana cara untuk memperbaikinya.
+
+Dengan melakukan upaya tersebut, diharapkan capaian pembelajaran akan meningkat secara signifikan di pertemuan selanjutnya.
