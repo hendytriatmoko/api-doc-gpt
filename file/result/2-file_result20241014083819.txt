@@ -1,0 +1,40 @@
+Berikut adalah analisis yang diminta terkait capaian pembelajaran, ukuran capaian dari materi pembelajaran di atas, dan penilaian terhadap jawaban mahasiswa.
+
+### 1. Penilaian Capaian Pembelajaran (Skala 1-100)
+**Capaian Pembelajaran**:
+- **Relevansi**: 85/100 (Capaian pembelajaran relevan dengan konteks sejarah dan sains sosial)
+- **Kejelasan Rumusan**: 80/100 (Rumusan cukup jelas tetapi bisa lebih spesifik)
+- **Keterukuran**: 75/100 (Capaian pembelajaran dapat diukur tetapi membutuhkan alat ukur yang lebih jelas)
+- **Kesesuaian dengan Taksonomi Bloom**: 70/100 (Capaian mencakup level memahami dan menerapkan, tetapi kurang pada analisis dan evaluasi)
+
+**Nilai Akhir**: 77.5 (dibulatkan menjadi 78)
+
+### 2. Ukur Capaian Pembelajaran dari Materi Pembelajaran
+- **Capaian Pembelajaran**: Mahasiswa seharusnya dapat menjelaskan proses pembuatan dan sejarah Mount Rushmore serta tantangan yang dihadapi.
+- **Ukur Capaian**: Melalui kuis atau tugas yang mengharuskan mahasiswa untuk menjelaskan dengan rinci tentang pentingnya serta sejarah Mount Rushmore, dan tantangan yang dihadapi. Rata-rata capaian dapat diukur dengan nilai rata-rata mahasiswa dalam tugas ini.
+
+### 3. Ukur Capaian Pembelajaran pada Soal Tugas
+- **Capaian Peserta Didik**: Tugas bertujuan untuk mengukur pemahaman siswa tentang teknologi pengukuran waktu, khusunya carbon dating.
+- **Ukur Capaian**: Mahasiswa diminta untuk menjelaskan prinsip dasar, kelebihan serta keterbatasan carbon dating. Hasil penilaian tugas dapat mengindikasikan seberapa baik mereka memahami konsep ini.
+
+### 4. Penilaian 1-100 untuk Masing-Masing Mahasiswa
+- **Jawaban Mahasiswa**: Penjelasan terhadap Madison Square Garden tidak relevan dengan tugas yang diberikan (carbon dating).
+- **Penilaian**: 30/100 (Karena jawaban tidak sesuai konteks dari pertanyaan dan tidak menunjukkan pemahaman tentang carbon dating).
+
+### 5. Identifikasi Persentase Capaian Pembelajaran yang Belum Dikuasai
+Sebagai contoh, jika diinginkan untuk menilai persentase capaian pembelajaran yang belum dikuasai:
+- **Contoh Data**:
+  - Mahasiswa menguasai 40% (Berdasarkan nilai di atas).
+  - Mahasiswa tidak menguasai 60%.
+
+**Grafik Batang**: 
+- Dapat digambarkan di perangkat lunak grafis, menampilkan dua batang: satu untuk "Persentase Dikuasai" dan satu lagi untuk "Persentase Tidak Dikuasai".
+
+### 6. Usulan Perbaikan Pembelajaran
+- **Usulan**:
+  - Melakukan review tambahan tentang konsep carbon dating dan aplikasi nyata dalam kehidupan sehari-hari sebelum tugas diberikan.
+  - Menggunakan metode pengajaran yang lebih interaktif seperti diskusi kelompok atau penggunaan video untuk menjelaskan proses carbon dating.
+  - Memberikan contoh aplikasi carbon dating dengan artifact yang sudah dikenal di kalangan mahasiswa.
+  - Memberikan rubrik penilaian yang jelas agar mahasiswa memahami apa yang diharapkan dalam jawaban mereka.
+
+Usulan ini diharapkan dapat meningkatkan pemahaman mahasiswa dan memastikan capaian pembelajaran yang lebih baik di masa mendatang.
