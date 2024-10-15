@@ -14,7 +14,7 @@ const { promisify } = require('util');
 
 // Inisialisasi OpenAI dengan API Key
 const openai = new OpenAI({
-    apiKey: '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' // Ganti dengan API Key Anda
+    apiKey: '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' // Ganti dengan API Key Anda
 });
 
 // async function postOcrDokumen(req,res){ 
@@ -210,6 +210,7 @@ async function getDokumenAll (req, res){
                 return res.status(500).json({ error: err.message });
             }
 
+            console.log('result',result)
             
 
             res.status(200).send({
@@ -308,11 +309,22 @@ async function postgpt(req, res) {
         fs.writeFileSync(outputFilePath, output.trim(), 'utf8');
 
         // Mengirimkan respons sukses
-        res.status(200).send({
-            message: 'success',
-            id_file: id_file,
-            result: output
-        });
+        const queryUpdate = 'update t_file set file_result = ? where id = ?';
+        db.query(queryUpdate, [fileresult,id_file], (err, result) => {
+            if (err) {
+                return res.status(500).json({ error: err.message });
+            }
+
+            console.log('result',result)
+            
+
+            res.status(200).send({
+                message: 'success',
+                id_file: id_file,
+                result: output
+            });
+        })
+        
 
     } catch (error) {
         console.error('Error processing the request:', error);
@@ -342,6 +354,60 @@ async function generateGpt(text) {
     }
 }
 
+async function getResult(req,res){
+    const { id_file } = req.query;
+
+    try{
+
+    
+        const queryAsync = promisify(db.query).bind(db);
+    const query = 'select file_result from t_file where id = ?'
+    // Mendapatkan file_prompt berdasarkan id_file
+    // const query = 'SELECT file_prompt FROM t_file WHERE id = ?';
+    const result = await queryAsync(query, [id_file]);
+
+    if (result.length === 0) {
+        return res.status(404).json({ message: 'File not found.' });
+    }
+
+    // Mendapatkan path file dan membaca teks yang diekstraksi
+    const filePath = path.join(__dirname, '../file/result', result[0].file_result);
+    var extractedText = fs.readFileSync(filePath, 'utf8');
+    res.status(200).send({
+        message: 'success',
+        id_file: id_file,
+        result: result,
+        text:extractedText
+    });
+    // db.query(query, [id_file], (err, result) => {
+    //     if (err) {
+    //         return res.status(500).json({ error: err.message });
+    //     }
+
+    //     const filePath = path.join(__dirname, '../file/result', result);
+    //     // const fileExtension = path.extname(file.filename).toLowerCase();
+    //     let extractedText = '';
+    //     extractedText = fs.readFileSync(filePath, 'utf8');
+
+
+
+    //     console.log('result',result)
+        
+
+    //     res.status(200).send({
+    //         message: 'success',
+    //         id_file: id_file,
+    //         result: result,
+    //         text:extractedText
+    //     });
+    // })
+}catch(error){
+    console.error('Error processing the request:', error);
+        res.status(500).send({ message: 'Error getting the document.' });
+}
+
+}
+
 module.exports = { 
-    postOcrDokumen,postOcrDokumenAll,getDokumenAll,postgpt
+    postOcrDokumen,postOcrDokumenAll,getDokumenAll,postgpt,getResult
 };
