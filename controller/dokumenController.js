@@ -486,7 +486,7 @@ async function getfile(req,res){
 }
 
 async function downloadSource(req, res){
-    const { nama_file,type } = req.query;
+    const { nama_file,type } = req.body;
     // const fileName = req.query.file;
 
     // if (!fileName) {
