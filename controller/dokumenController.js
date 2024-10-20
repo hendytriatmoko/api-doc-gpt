@@ -358,28 +358,27 @@ async function generateGpt(text) {
 }
 
 async function getResult(req,res){
-    const { id_file } = req.query;
+    const { nama_file } = req.query;
 
     try{
 
     
-        const queryAsync = promisify(db.query).bind(db);
-    const query = 'select file_result from t_file where id = ?'
-    // Mendapatkan file_prompt berdasarkan id_file
-    // const query = 'SELECT file_prompt FROM t_file WHERE id = ?';
-    const result = await queryAsync(query, [id_file]);
+    //     const queryAsync = promisify(db.query).bind(db);
+    // const query = 'select file from t_result where id = ?'
+    // // Mendapatkan file_prompt berdasarkan id_file
+    // // const query = 'SELECT file_prompt FROM t_file WHERE id = ?';
+    // const result = await queryAsync(query, [id_file]);
 
-    if (result.length === 0) {
-        return res.status(404).json({ message: 'File not found.' });
-    }
+    // if (result.length === 0) {
+    //     return res.status(404).json({ message: 'File not found.' });
+    // }
 
     // Mendapatkan path file dan membaca teks yang diekstraksi
-    const filePath = path.join(__dirname, '../file/result', result[0].file_result);
+    const filePath = path.join(__dirname, '../file/result', nama_file);
     var extractedText = fs.readFileSync(filePath, 'utf8');
     res.status(200).send({
         message: 'success',
-        id_file: id_file,
-        result: result,
+        nama_file: nama_file,
         text:extractedText
     });
     // db.query(query, [id_file], (err, result) => {
