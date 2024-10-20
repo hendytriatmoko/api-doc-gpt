@@ -161,7 +161,7 @@ async function postOcrDokumenAll (req, res) {
     1. berikan nilai skala 1-100 capaian pembelajarannya dengan aspek relevansi,kejelasan rumusan, keterukuran, kesesuaian dengan taksonomi bloom
     2. ukur capaian pembelajaran dari materi pembelajaran diatas
     3. ukur capaian pembelajaran pada soal tugas
-    4. berikan penilaian 1-100 untuk masing masing mahasiswa pada jawaban tugas
+    4. berikan penilaian 1-100 untuk masing masing mahasiswa pada jawaban tugas sertakan alasannya dan dalam bentuk tabel
     5. identifikasi persentase capaian pembelajaran yang belum dikuasai oleh sebagian besar mahasiswa dalam grafik batang
     6. berikan usulan perbaikan pembelajaran relevan pada instruktur terkait capaian pembelajaran yang belum dikuasai sebagian besar mahasiswa
     `
