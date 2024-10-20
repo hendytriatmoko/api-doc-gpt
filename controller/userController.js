@@ -158,6 +158,32 @@ async function addUser (req, res) {
     }
 }
 
+async function putuser(req,res){
+    const { id,nama,password } = req.body
+
+    try{
+        const saltRounds = 10;
+        const hashedPassword = await bcrypt.hash(password, saltRounds);
+        const queryAsync = promisify(db.query).bind(db);
+        const query = 'update t_user set nama = ?, password = ? where id = ?';
+        const dataget = await queryAsync(query, [nama,hashedPassword, id]);
+        res.status(200).json(
+            { 
+                message: 'User successfully updated',
+                result: {
+                    id: id,
+                    nama: nama
+                }
+            }
+        );
+    }catch(error){
+        res.status(500).send({
+            message: 'Error on edit user',
+            error: error.message
+        });
+    }
+}
+
 async function getuser(req,res){
     try{
         const queryAsync = promisify(db.query).bind(db);
@@ -181,5 +207,5 @@ async function getuser(req,res){
 }
 
 module.exports = { 
-    addUser,loginUser,getuser
+    addUser,loginUser,getuser,putuser
 };

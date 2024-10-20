@@ -60,6 +60,8 @@ router.post('/adduser', upload.none(), userController.addUser)
 
 router.get('/getuser', upload.none(), userController.getuser)
 
+router.put('/putuser', upload.none(), userController.putuser)
+
 router.post('/login', upload.none(), userController.loginUser)
 
 router.get('/listfile', upload.none(), dokumenController.getDokumenAll)
