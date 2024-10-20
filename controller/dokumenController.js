@@ -485,6 +485,29 @@ async function getfile(req,res){
     // try{
 }
 
+async function downloadSource(req, res){
+    const { nama_file,type } = req.query;
+    // const fileName = req.query.file;
+
+    // if (!fileName) {
+    //     return res.status(400).json({ error: 'File name is required' });
+    // }
+
+    // Menentukan path lengkap file yang akan diunduh
+    const filePath = path.join(__dirname, `../file/${type}`, nama_file);
+
+    // Mengirim file untuk diunduh
+    res.download(filePath, (err) => {
+        if (err) {
+            console.error('Error during file download:', err);
+            res.status(500).send('Error downloading file');
+        }
+    });
+    // res.status(200).send({
+    //     message: 'download success',
+    // });
+}
+
 module.exports = { 
-    postOcrDokumen,postOcrDokumenAll,getDokumenAll,postgpt,getResult,getfile
+    postOcrDokumen,postOcrDokumenAll,getDokumenAll,postgpt,getResult,getfile,downloadSource
 };
