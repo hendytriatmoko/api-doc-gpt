@@ -109,26 +109,42 @@ async function addUser (req, res) {
     //     res.status(200).json({ message: 'User added successfully', data: nama });
     // });
     try{
-        const saltRounds = 10;
-        const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-        const query = 'INSERT INTO t_user (nama, username, password) VALUES (?, ?, ?)';
+        const queryAsync = promisify(db.query).bind(db);
+        const queryusername = 'select username from t_user where username = ?';
+        const dataget = await queryAsync(queryusername, [username]);
 
-        db.query(query, [nama, username, hashedPassword], (err, result) => {
-            if (err) {
-                return res.status(500).json({ error: err.message });
-            }
-
-            res.status(200).json(
+        if (dataget.length > 0) {
+            res.status(400).json(
                 { 
-                    message: 'User added successfully', 
-                    data: {
-                        username: username,
-                        nama: nama
-                    }
+                    message: 'Username Sudah Ada',
                 }
             );
-        });
+        }else{
+                const saltRounds = 10;
+                const hashedPassword = await bcrypt.hash(password, saltRounds);
+        
+                const query = 'INSERT INTO t_user (nama, username, password) VALUES (?, ?, ?)';
+        
+                db.query(query, [nama, username, hashedPassword], (err, result) => {
+                    if (err) {
+                        return res.status(500).json({ error: err.message });
+                    }
+        
+                    res.status(200).json(
+                        { 
+                            message: 'User added successfully', 
+                            data: {
+                                username: username,
+                                nama: nama
+                            }
+                        }
+                    );
+                });
+
+        }
+
+
 
         // res.status(200).send({
         //     nama: nama,
@@ -142,6 +158,28 @@ async function addUser (req, res) {
     }
 }
 
+async function getuser(req,res){
+    try{
+        const queryAsync = promisify(db.query).bind(db);
+        const query = 'select * from t_user';
+        const dataget = await queryAsync(query);
+        // const result = dataget
+
+        res.status(200).send({
+            message: 'success',
+            // hashed: hashedPassword,
+            result: dataget
+        });
+
+    }catch(error){
+        res.status(500).send({
+            message: 'Error in get user',
+            error: error.message
+        });
+        
+    }
+}
+
 module.exports = { 
-    addUser,loginUser
+    addUser,loginUser,getuser
 };

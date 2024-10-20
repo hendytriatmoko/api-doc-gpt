@@ -58,6 +58,8 @@ router.post('/postDokumen', upload.single('file'), dokumenController.postOcrDoku
 
 router.post('/adduser', upload.none(), userController.addUser)
 
+router.get('/getuser', upload.none(), userController.getuser)
+
 router.post('/login', upload.none(), userController.loginUser)
 
 router.get('/listfile', upload.none(), dokumenController.getDokumenAll)
