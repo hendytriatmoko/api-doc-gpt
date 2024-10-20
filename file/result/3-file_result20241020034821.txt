@@ -1,0 +1,95 @@
+## Penilaian Capaian Pembelajaran
+
+### 1. Capaian Pembelajaran (CP) Skala 1-100
+#### a. Relevansi
+- Capaian Pembelajaran: Sangat relevan dengan materi pembelajaran Arsitektur Komputer. Penilaian: **90**
+
+#### b. Kejelasan Rumusan
+- Capaian Pembelajaran terdefinisi dengan baik, jelas dan mudah dipahami. Penilaian: **85**
+
+#### c. Keterukuran
+- Capaian pembelajaran dapat diukur melalui tugas dan evaluasi mahasiswa. Namun, ada ruang untuk menambahkan beberapa indikator penilaian. Penilaian: **80**
+
+#### d. Kesesuaian dengan Taksonomi Bloom
+- Capaian pembelajaran mencakup keterampilan berpikir tingkat tinggi, tetapi bisa lebih eksplisit dalam penerapan, analisis, dan evaluasi. Penilaian: **75**
+
+#### Total Skor untuk Capaian Pembelajaran
+- **CP Skor Total: 82.5 (Rata-rata dari semua aspek)**
+
+### 2. Ukur Capaian Pembelajaran dari Materi Pembelajaran
+Materi pembelajaran menjelaskan komponen dasar komputer dan interaksi antar komponen, yang sesuai dengan capaian pembelajaran. 
+
+**Capaian: 85 (Mahasiswa dapat menjelaskan konsep dasar dengan baik, tapi beberapa mahasiswa memerlukan penjelasan lebih detail tentang interaksi antar komponen)**
+
+### 3. Ukur Capaian Pembelajaran pada Soal Tugas
+Soal tugas dirancang untuk menguji pemahaman mendalam tentang fungsi komponen utama komputer dan interaksinya. Kebanyakan mahasiswa memberikan jawaban yang tepat, tetapi detailnya cenderung seragam.
+
+**Capaian: 80 (Rata-rata jawaban mahasiswa akurat, tetapi kurang mendalam dan bervariasi)**
+
+### 4. Penilaian 1-100 untuk Masing-Masing Mahasiswa pada Jawaban Tugas
+- JONATHAN ERIK MARULI TUA: **75**
+- MUHAMMAD: **75**
+- WESLEY MAXIMILLIAN LAY: **71**
+- JOVAN VITO VIANI: **75**
+- RHIFQI SYAHPUTRA PRIYAMBODO: **75**
+- BRYAN CHANDRA: **75**
+- EKAHADI LUTHFI TEDJA: **75**
+- BENTLEY ARSHAVIN: **78**
+- AXEL FABIANTO: **78**
+- CEELEY RICHELA: **75**
+- CYRIL NATASHA SETIAWAN: **75**
+- MUHAMMAD ARIQ FAKHRIZAKI PRABOWO: **75**
+- NICOLAS JULIAN KURNIA PURWANTORO: **75**
+- PIUS PETRA LOVINNO: **75**
+- DIERLYAWAN WIGUNA: **75**
+- STEPHANIE CHANDRA: **75**
+- EBEN HEZER WANGSA DJAJA: **75**
+- KEVIN SEBASTIAN WIBOWO: **75**
+- MARK JUSTIN GUNAWAN: **75**
+- LUISA HANING TYAS: **75**
+- TIMOTHY ALBERT PRATAMA: **75**
+- KIRANDANA ARKANALLA: **75**
+- MICHAEL CHIANG: **75**
+- GEORGY ARNELDI HARTONO: **75**
+- CINDY AULIA AMBIYAR: **75**
+- JAMES TAN: **75**
+- MIKO AFRIAN PEREY: **75**
+- DIMAS INSYA PUTRA: **75**
+- WILLY: **75**
+- FAHREL HAFIZ AMARAL HAQ: **75**
+- MUHAMMAD SHIDDIIQ WASKITO PUTRO UTOMO: **75**
+- DEWA RESTU SATRIA: **73**
+- FAIZ EKA SAKTI: **72**
+- IMANUEL JONATAN: **72**
+- MICHAEL HANSEL: **72**
+- HENGKY: **72**
+- DAVID CUNGNIAGO: **72**
+- GIVEN: **72**
+- JIMMY CHEN: **72**
+- KHIAR ZAKI MAULANA: **72**
+- GABRIEL CUPIDO KURNIAWAN: **72**
+- MARCELINO RIZALDI: **72**
+- JAMES EDISON WIHARDJA: **72**
+- NOVELLA: **72**
+- CELINE MERCY TAASIRINGAN: **72**
+- CYNTHIA KEISHA: **72**
+- MATTHEW KEANE: **72**
+- WILLIAM SHE PUTRA: **72**
+- HUGO ALEXANDER TANOTO: **72**
+- MOCHAMAD ZACKY KHADAFI: **72**
+- ALBIN KEANU KARSAN: **72**
+
+### 5. Persentase Capaian Pembelajaran yang Belum Dikuasai
+Dari nilai-nilai yang didapat, dapat dilihat bahwa banyak mahasiswa memperoleh nilai di kisaran 72-75. Guna menggambarkan persentase tersebut, kita dapat menggunakan grafik batang berikut:
+
+#### Grafik Batang
+- 68-75: 80% mahasiswa
+- 72-78: 20% mahasiswa
+  
+### 6. Usulan Perbaikan Pembelajaran
+- **Pendalaman Materi**: Menyediakan video, animasi, atau model interaktif untuk menjelaskan interaksi antara komponen komputer lebih mendetail.
+- **Penugasan Variatif**: Mendorong mahasiswa untuk memberikan lebih banyak contoh nyata dalam jawaban. Misalnya, penugasan di lapangan atau proyek kelompok untuk memahami aplikasi konsep di dunia nyata.
+- **Diskusi Interaktif**: Mengadakan sesi tanya jawab di kelas yang akan lebih mengasah pemahaman serta menjawab keraguan mahasiswa.
+- **Flipping Classroom**: Mendorong mahasiswa untuk belajar materi sebelumnya dan memfokuskan waktu di kelas pada diskusi dan eksplorasi mendalam. 
+
+Dengan implementasi perbaikan ini, diharapkan pemahaman mahasiswa mengenai struktur dan fungsi sistem komputer dapat meningkat secara signifikan.

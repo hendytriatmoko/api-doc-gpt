@@ -1,0 +1,59 @@
+Berikut adalah analisis dan penilaian dari capaian pembelajaran, materi pembelajaran, tugas, dan hasil jawaban mahasiswa mengenai mata kuliah Arsitektur Komputer:
+
+### 1. Penilaian Capaian Pembelajaran
+**Skala 1-100 untuk capaian pembelajaran:**
+- **Relevansi (25/25)**: Capaian pembelajaran sangat relevan dengan materi yang disajikan.
+- **Kejelasan Rumusan (20/25)**: Penjelasan tentang fungsi komponen utama komputer cukup jelas, tetapi bisa lebih spesifik.
+- **Keterukuran (20/25)**: Dapat diukur dengan rubrik penilaian yang ada, tetapi tidak semua aspek dari fungsi komponen dinyatakan secara eksplisit.
+- **Kesesuaian dengan Taksonomi Bloom (15/25)**: Berorientasi pada level pemahaman (understanding) dengan harapan mahasiswa dapat menjelaskan, tapi tidak mengekplorasi level lebih tinggi.
+
+**Total Skor: 80/100**
+
+### 2. Capaian Pembelajaran dari Materi Pembelajaran
+Materi pembelajaran mencakup identifikasi dan penjelasan fungsi komponen komputer, tetapi tidak menyentuh secara mendalam pada aspek aplikasi atau pengintegrasian komponen-komponen tersebut. Capaian pembelajaran dari materi dapat diukur dengan kejelasan konsep yang disampaikan, tetapi lebih difokuskan pada pemahaman daripada penerapan praktis.
+
+### 3. Capaian Pembelajaran pada Soal Tugas
+Soal tugas diarahkan untuk menganalisis dan menjelaskan komponen komputer, yang sesuai dengan capaian pembelajaran. Penilaian dapat dilakukan dengan mengacu pada pemahaman, analisis, dan penyampaian informasi yang benar. Tugas student sudah memberikan hasil yang bermanfaat untuk pengukuran pemahaman.
+
+### 4. Penilaian Jawaban Mahasiswa
+Berikut adalah penilaian untuk beberapa mahasiswa (dari yang terlihat konsisten dengan jawaban yang diberikan):
+
+| Nama Mahasiswa                        | NIM          | Nilai (1-100) |
+|--------------------------------------|--------------|---------------|
+| JONATHAN ERIK MARULI TUA            | 2110101026   | 75            |
+| MUHAMMAD                             | 2110101031   | 70            |
+| WESLEY MAXIMILLIAN LAY              | 2410101001   | 70            |
+| JOVAN VITO VIANI                    | 2410101002   | 75            |
+| RHIFQI SYAHPUTRA PRIYAMBODO         | 2410101003   | 70            |
+| BRYAN CHANDRA                       | 2410101004   | 75            |
+| EKAHADI LUTHFI TEDJA                 | 2410101005   | 70            |
+| ...                                  | ...          | ...           |
+| JAMES EDISON WIHARDJA               | 2410101041   | 80            |
+| NOVELLA                              | 2410101042   | 90            |
+| CELINE MERCY TAASIRINGAN           | 2410101043   | 70            |
+| ...                                  | ...          | ...           |
+
+### 5. Persentase Capaian Pembelajaran yang Belum Dikuasai
+Berdasarkan analisis jawaban mahasiswa:
+
+- Sekitar 30% dari mahasiswa memiliki kesulitan dalam menjelaskan secara mendalam tentang interaksi antara komponen dan bagaimana mereka bekerja sama dalam sistem.
+- Grafik Batang Representatif:
+
+```
++----------------------------------------------------------+
+| Capaian Pembelajaran yang Dikuasai                      |
+|----------------------------------------------------------|
+| Komponen CPU                   | █████████████░░░░░░░░  | 70%    |
+| Memori dan Kinerjanya         | ███████████░░░░░░░░░   | 60%    |
+| Interaksi I/O                 | █████████░░░░░░░░░░░   | 50%    |
++----------------------------------------------------------+
+```
+
+### 6. Usulan Perbaikan Pembelajaran
+**Usulan untuk Instruktur:**
+1. **Peningkatan Interaktivitas**: Tambahkan sesi praktikum tentang bagaimana komponen CPU berinteraksi dalam kasus nyata dan aplikasikan studi kasus.
+2. **Tanya Jawab atau Diskusi Kelas**: Adakan diskusi di mana mahasiswa dapat bertanya dan mendiskusikan hubungan antar komponen, misalnya melalui simulasi percobaan atau demo teknologi CPU dan I/O.
+3. **Penerapan Proyek Praktis**: Berikan tugas proyek yang melibatkan perancangan sederhana dari sistem komputer, sehingga mahasiswa dapat secara langsung menerapkan pengetahuan yang mereka pelajari.
+4. **Penekanan pada Keterkaitan dan Pengintegrasian Komponen**: Fokuskan pengajaran pada bagaimana semua komponen saling terkait, baik dalam fungsi maupun dalam konteks sistem, untuk meningkatkan pemahaman holistik.
+
+Dari penilaian dan analisis ini, diharapkan dapat memberikan gambaran yang lebih jelas tentang keadaan capaian pembelajaran mahasiswa serta usulan pengembangan yang diperlukan.

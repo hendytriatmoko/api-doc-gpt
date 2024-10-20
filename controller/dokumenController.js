@@ -85,7 +85,7 @@ async function postOcrDokumen (req, res) {
 
 
 async function postOcrDokumenAll (req, res) {
-    const { user_id } = req.body;
+    const { user_id,nama } = req.body;
     const uploadedFiles = req.files;
 
     let fileNames = [
@@ -172,9 +172,10 @@ async function postOcrDokumenAll (req, res) {
 
 
     try{
-        const query = 'INSERT INTO t_file (id_user, file1, file2, file3, file4, file_prompt) VALUES (?, ?, ?,?, ?, ?)';
+        const query = 'INSERT INTO t_file (id_user,nama, file1, file2, file3, file4, file_prompt) VALUES (?,?, ?, ?,?, ?, ?)';
         db.query(query, [
                 user_id, 
+                nama,
                 fileNames[0].filename, 
                 fileNames[1].filename, 
                 fileNames[2].filename, 
@@ -310,8 +311,9 @@ async function postgpt(req, res) {
         fs.writeFileSync(outputFilePath, output.trim(), 'utf8');
 
         // Mengirimkan respons sukses
-        const queryUpdate = 'update t_file set file_result = ? where id = ?';
-        db.query(queryUpdate, [fileresult,id_file], (err, result) => {
+        const queryInsert = 'insert into t_result (id_file,file) values (?,?)'
+        // const queryUpdate = 'update t_file set file_result = ? where id = ?';
+        db.query(queryInsert, [id_file,fileresult], (err, result) => {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
@@ -409,6 +411,81 @@ async function getResult(req,res){
 
 }
 
+async function getfile(req,res){
+    const { id_user } = req.query;
+
+    try{
+        const queryAsync = promisify(db.query).bind(db);
+        
+        // Mendapatkan file_prompt berdasarkan id_file
+        const query = `select 
+                        a.* ,
+                        b.id_file,
+                        b.file,
+                        b.datetime
+                        from t_file a 
+                        left join t_result b on a.id = b.id_file
+                    where a.id_user = ?`
+        const dataget = await queryAsync(query, [id_user]);
+        const result = dataget
+
+        const resultfile = []
+        const resultgpt = []
+        for (let i = 0; i < result.length; i++) {
+            const isIdOneExists = resultfile.some(file => file.id === result[i].id);
+            if (isIdOneExists) {
+                // console.log('ID 1 already exists');
+            } else {
+                const data = {
+                    id: result[i].id,
+                    id_user: result[i].id_user,
+                    nama: result[i].nama,
+                    file1: result[i].file1,
+                    file2: result[i].file2,
+                    file3: result[i].file3,
+                    file4: result[i].file4,
+                    file_prompt: result[i].file_prompt,
+                    file_result: result[i].file_result,
+                    updated_at: result[i].updated_at,
+                    fileresult: []
+                }
+                resultfile.push(data)
+            }
+            const resgpt = {
+                id_file:result[i].id_file,
+                file: result[i].file,
+                datetime:result[i].datetime
+            }
+            // if (data.id === resgpt.id_file) {
+            //     data.fileresult.push(resgpt)
+            // }
+
+
+            resultgpt.push(resgpt)
+        }
+        
+        for (let i = 0; i < resultfile.length; i++) {
+            for (let j = 0; j < resultgpt.length; j++) {
+                if (resultfile[i].id === resultgpt[j].id_file) {
+                    resultfile[i].fileresult.push(resultgpt[j])
+                }
+            }
+        } 
+    
+        res.status(200).send({
+            message: 'success',
+            id_user: id_user,
+            result: resultfile,
+        });
+    }catch(error){
+        res.status(400).send({
+            message: 'file tidak ditemukan',
+            error: error.message
+        });
+    }
+    // try{
+}
+
 module.exports = { 
-    postOcrDokumen,postOcrDokumenAll,getDokumenAll,postgpt,getResult
+    postOcrDokumen,postOcrDokumenAll,getDokumenAll,postgpt,getResult,getfile
 };

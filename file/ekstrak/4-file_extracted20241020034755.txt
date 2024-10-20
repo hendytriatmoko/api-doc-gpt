@@ -483,6 +483,6 @@ Perangkat Input/Output (I/O) seperti keyboard dan monitor berkomunikasi dengan C
     1. berikan nilai skala 1-100 capaian pembelajarannya dengan aspek relevansi,kejelasan rumusan, keterukuran, kesesuaian dengan taksonomi bloom
     2. ukur capaian pembelajaran dari materi pembelajaran diatas
     3. ukur capaian pembelajaran pada soal tugas
-    4. berikan penilaian 1-100 untuk masing masing mahasiswa pada jawaban tugas beserta alasannya
+    4. berikan penilaian 1-100 untuk masing masing mahasiswa pada jawaban tugas
     5. identifikasi persentase capaian pembelajaran yang belum dikuasai oleh sebagian besar mahasiswa dalam grafik batang
     6. berikan usulan perbaikan pembelajaran relevan pada instruktur terkait capaian pembelajaran yang belum dikuasai sebagian besar mahasiswa

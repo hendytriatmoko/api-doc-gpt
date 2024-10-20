@@ -58,11 +58,18 @@ router.post('/postDokumen', upload.single('file'), dokumenController.postOcrDoku
 
 router.post('/adduser', upload.none(), userController.addUser)
 
+router.post('/login', upload.none(), userController.loginUser)
+
 router.get('/listfile', upload.none(), dokumenController.getDokumenAll)
+
+router.get('/getfile', upload.none(), dokumenController.getfile)
+
 
 router.get('/getresult', upload.none(), dokumenController.getResult)
 
 router.post('/postgpt', upload.none(), dokumenController.postgpt)
+
+
 
 router.post('/postfile', upload.fields([
   { name: 'file1', maxCount: 1 },
