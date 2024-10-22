@@ -456,7 +456,7 @@ async function getfile(req,res){
             const resgpt = {
                 id_file:result[i].id_file,
                 file: result[i].file,
-                file: result[i].type,
+                type: result[i].type,
                 datetime:result[i].datetime
             }
             // if (data.id === resgpt.id_file) {
