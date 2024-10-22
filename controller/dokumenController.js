@@ -12,8 +12,10 @@ const db = require('../database/config');
 // Import OpenAI library
 const OpenAI = require('openai');
 const { promisify } = require('util');
+const axios = require('axios');
 
 // Inisialisasi OpenAI dengan API Key
+const apiGemini = process.env.keygemini
 const openai = new OpenAI({
     apiKey: process.env.key
     });
@@ -311,7 +313,7 @@ async function postgpt(req, res) {
         fs.writeFileSync(outputFilePath, output.trim(), 'utf8');
 
         // Mengirimkan respons sukses
-        const queryInsert = 'insert into t_result (id_file,file) values (?,?)'
+        const queryInsert = 'insert into t_result (id_file,type,file) values (?,0,?)'
         // const queryUpdate = 'update t_file set file_result = ? where id = ?';
         db.query(queryInsert, [id_file,fileresult], (err, result) => {
             if (err) {
@@ -421,7 +423,8 @@ async function getfile(req,res){
                         a.* ,
                         b.id_file,
                         b.file,
-                        b.datetime
+                        b.datetime,
+                        b.type
                         from t_file a 
                         left join t_result b on a.id = b.id_file
                     where a.id_user = ?`
@@ -453,6 +456,7 @@ async function getfile(req,res){
             const resgpt = {
                 id_file:result[i].id_file,
                 file: result[i].file,
+                file: result[i].type,
                 datetime:result[i].datetime
             }
             // if (data.id === resgpt.id_file) {
@@ -508,6 +512,97 @@ async function downloadSource(req, res){
     // });
 }
 
+async function postgptgemini(req,res) {
+    const { id_file } = req.body;
+    try{
+        const queryAsync = promisify(db.query).bind(db);
+        
+        // Mendapatkan file_prompt berdasarkan id_file
+        const query = 'SELECT file_prompt FROM t_file WHERE id = ?';
+        const result = await queryAsync(query, [id_file]);
+
+        if (result.length === 0) {
+            return res.status(404).json({ message: 'File not found.' });
+        }
+
+        // Mendapatkan path file dan membaca teks yang diekstraksi
+        const filePath = path.join(__dirname, '../file/ekstrak', result[0].file_prompt);
+        var extractedText = fs.readFileSync(filePath, 'utf8');
+
+
+        let output = await generateGptGemini(extractedText);
+
+
+
+        let timestamp = moment().format('YYYYMMDDhhmmss');
+        let fileresult = `${id_file}-file_result${timestamp}.txt`
+        const outputFilePath = path.join(__dirname, '../file/result', fileresult);
+        fs.writeFileSync(outputFilePath, output.trim(), 'utf8');
+
+        // Mengirimkan respons sukses
+        const queryInsert = 'insert into t_result (id_file,type,file) values (?,1,?)'
+        // const queryUpdate = 'update t_file set file_result = ? where id = ?';
+        db.query(queryInsert, [id_file,fileresult], (err, result) => {
+            if (err) {
+                return res.status(500).json({ error: err.message });
+            }
+
+            console.log('result',result)
+            
+
+            res.status(200).send({
+                message: 'success',
+                id_file: id_file,
+                result: output
+            });
+        })
+
+        
+
+
+
+        res.status(200).send({
+            message: 'success',
+            extractedText: output
+            // id_file: id_file,
+            // result: output
+        });
+
+    }catch(error){
+        res.status(500).send('Error post gemini');
+    }
+}
+
+async function generateGptGemini(text) {
+    const requestBody = {
+        "contents": [
+          {
+            "parts": [
+              {
+                "text": text
+              }
+            ]
+          }
+        ]
+      };
+      const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiGemini}`;
+    try {
+        const response = await axios.post(url, requestBody, {
+            headers: {
+              'Content-Type': 'application/json'
+            }
+          });
+          
+          const data = response.data.candidates[0].content.parts[0].text
+          return data;
+          console.log('Response data:', data);
+
+    } catch (error) {
+        console.error("Terjadi kesalahan saat generate GPT:", error);
+        throw new Error('Error generating GPT output.');
+    }
+}
+
 module.exports = { 
-    postOcrDokumen,postOcrDokumenAll,getDokumenAll,postgpt,getResult,getfile,downloadSource
+    postOcrDokumen,postOcrDokumenAll,getDokumenAll,postgpt,getResult,getfile,downloadSource,postgptgemini
 };

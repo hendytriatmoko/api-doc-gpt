@@ -74,6 +74,8 @@ router.post('/download_file', upload.none(), dokumenController.downloadSource)
 
 router.post('/postgpt', upload.none(), dokumenController.postgpt)
 
+router.post('/postgptgemini', upload.none(), dokumenController.postgptgemini)
+
 
 
 router.post('/postfile', upload.fields([
