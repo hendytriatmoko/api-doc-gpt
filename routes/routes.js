@@ -81,6 +81,8 @@ router.post('/postgptgemini', upload.none(), dokumenController.postgptgemini)
 
 router.post('/postuniversitas', upload.none(), adminController.postuniversitas)
 router.get('/getuniversitas', upload.none(), adminController.getuniversitas)
+router.put('/putuniversitas', upload.none(), adminController.putuniversitas)
+router.post('/deleteuniversitas', upload.none(), adminController.deleteuniversitas)
 
 
 

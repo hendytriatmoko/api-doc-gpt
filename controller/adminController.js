@@ -63,7 +63,52 @@ async function getuniversitas(req,res) {
     }
 }
 
+async function putuniversitas(req,res) {
+    const { id,nama } = req.body;
+    try{
+        const queryAsync = promisify(db.query).bind(db);
+        const query = 'update t_universitas set nama = ? where id = ?';
+        await queryAsync(query, [nama, id]);
+        res.status(200).json(
+            { 
+                message: 'University successfully updated',
+                result: {
+                    id: id,
+                    nama: nama
+                }
+            }
+        );
+    }catch(error){
+        res.status(500).send({
+            message: 'Error in update university',
+            error: error.message
+        });
+    }
+}
+
+async function deleteuniversitas(req,res) {
+    const { id } = req.body;
+    try{
+        const queryAsync = promisify(db.query).bind(db);
+        const query = 'delete from t_universitas where id = ?';
+        await queryAsync(query, [id]);
+        res.status(200).json(
+            { 
+                message: 'University successfully deleted',
+                result: {
+                    id: id
+                }
+            }
+        );
+    }catch(error){
+        res.status(500).send({
+            message: 'Error in delete university',
+            error: error.message
+        });
+    }
+}
+
 
 module.exports = { 
-    postuniversitas,getuniversitas
+    postuniversitas,getuniversitas,putuniversitas,deleteuniversitas
 };
