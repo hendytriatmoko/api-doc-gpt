@@ -427,7 +427,7 @@ async function getfile(req,res){
                         b.type
                         from t_file a 
                         left join t_result b on a.id = b.id_file
-                    where a.id_user = ?`
+                    where a.id_user = ? order by a.updated_at desc`
         const dataget = await queryAsync(query, [id_user]);
         const result = dataget
 
