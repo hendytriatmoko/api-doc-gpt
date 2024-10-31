@@ -97,7 +97,7 @@ async function loginUser (req, res) {
 
 async function addUser (req, res) {
     console.log('req',req.body)
-    const { nama, username, password } = req.body;
+    const { nama, username, password, role } = req.body;
 
     // const query = 'INSERT INTO t_user (nama, password) VALUES (?, ?)';
 
@@ -123,10 +123,11 @@ async function addUser (req, res) {
         }else{
                 const saltRounds = 10;
                 const hashedPassword = await bcrypt.hash(password, saltRounds);
+                
         
-                const query = 'INSERT INTO t_user (nama, username, password) VALUES (?, ?, ?)';
+                const query = 'INSERT INTO t_user (nama, username, password, role) VALUES (?, ?, ?, ?)';
         
-                db.query(query, [nama, username, hashedPassword], (err, result) => {
+                db.query(query, [nama, username, hashedPassword, role], (err, result) => {
                     if (err) {
                         return res.status(500).json({ error: err.message });
                     }
