@@ -5,6 +5,7 @@ const multer = require('multer');
 const path = require('path');
 const dokumenController = require('../controller/dokumenController.js')
 const userController = require('../controller/userController.js')
+const adminController = require('../controller/adminController.js')
 const database = require('../database/config.js')
 const moment = require('moment')
 
@@ -75,6 +76,13 @@ router.post('/download_file', upload.none(), dokumenController.downloadSource)
 router.post('/postgpt', upload.none(), dokumenController.postgpt)
 
 router.post('/postgptgemini', upload.none(), dokumenController.postgptgemini)
+
+
+
+router.post('/postuniversitas', upload.none(), adminController.postuniversitas)
+router.get('/getuniversitas', upload.none(), adminController.getuniversitas)
+
+
 
 
 
