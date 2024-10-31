@@ -85,6 +85,10 @@ router.put('/putuniversitas', upload.none(), adminController.putuniversitas)
 router.post('/deleteuniversitas', upload.none(), adminController.deleteuniversitas)
 
 
+router.get('/getguideline', upload.none(), adminController.getguideline)
+router.put('/putguideline', upload.single('file'), adminController.putguideline)
+
+
 
 
 

@@ -108,7 +108,59 @@ async function deleteuniversitas(req,res) {
     }
 }
 
+async function getguideline(req,res) {
+    try{
+        const queryAsync = promisify(db.query).bind(db);
+        const query = 'select * from t_guide';
+        const dataget = await queryAsync(query);
+        // const result = dataget
+
+        res.status(200).send({
+            message: 'success',
+            // hashed: hashedPassword,
+            result: dataget
+        });
+    }catch(error){
+        res.status(500).send({
+            message: 'Error in get guideline',
+            error: error.message
+        });
+    }
+}
+
+async function putguideline(req,res) {
+    const file = req.file;
+    const { type } = req.body;
+    
+    if (!file) {
+        return res.status(400).send({ message: 'No file uploaded.' });
+    }
+
+    const filePath = path.join(__dirname, '../file/guideline', file.filename);
+    const fileExtension = path.extname(file.filename).toLowerCase();
+
+    try{
+        const type_set = type === '0' ? 'guideline' : 'template'
+        const queryAsync = promisify(db.query).bind(db);
+        const query = `update t_guide set ${type_set} = ? where id = 1`;
+        await queryAsync(query, [file.filename]);
+        res.status(200).json(
+            { 
+                message: 'guideline successfully updated',
+                result: {
+                    file: file.filename
+                }
+            }
+        );
+    }catch(error){
+        res.status(500).send({
+            message: 'Error in update guideline',
+            error: error.message
+        });
+    }
+}
+
 
 module.exports = { 
-    postuniversitas,getuniversitas,putuniversitas,deleteuniversitas
+    postuniversitas,getuniversitas,putuniversitas,deleteuniversitas,getguideline,putguideline
 };
