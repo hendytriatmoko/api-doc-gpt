@@ -177,7 +177,7 @@ async function postOcrDokumenAll (req, res) {
 
 
     try{
-        const query = 'INSERT INTO t_file (id_user,nama, file1, file2, file3, file4, file_prompt) VALUES (?,?, ?, ?,?, ?, ?)';
+        const query = 'INSERT INTO t_file (id_user,nama, file1, file2, file3, file4, file5 file_prompt) VALUES (?,?, ?, ?,?, ?,?, ?)';
         db.query(query, [
                 user_id, 
                 nama,
@@ -370,7 +370,11 @@ async function getResult(req,res){
 
     
     //     const queryAsync = promisify(db.query).bind(db);
-    // const query = 'select file from t_result where id = ?'
+    // const query = `SELECT a.file,c.id 'id_user',c.nama 'nama_user', d.nama 'nama_universitas' FROM t_result a
+    // left join t_file b on a.id_file = b.id
+    // left join t_user c on b.id_user = c.id
+    // left join t_universitas d on c.id_universitas = d.id
+    // WHERE file = '2-file_result20241020033231.txt'`
     // // Mendapatkan file_prompt berdasarkan id_file
     // // const query = 'SELECT file_prompt FROM t_file WHERE id = ?';
     // const result = await queryAsync(query, [id_file]);
