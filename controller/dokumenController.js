@@ -451,6 +451,7 @@ async function getfile(req,res){
                     file2: result[i].file2,
                     file3: result[i].file3,
                     file4: result[i].file4,
+                    file5: result[i].file5,
                     file_prompt: result[i].file_prompt,
                     file_result: result[i].file_result,
                     updated_at: result[i].updated_at,
