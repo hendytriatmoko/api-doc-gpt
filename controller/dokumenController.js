@@ -666,6 +666,29 @@ async function getalldata(req,res){
     }
 }
 
+async function deletefile(req,res){
+    const { id_file } = req.body;
+    try{
+        const queryAsync = promisify(db.query).bind(db);
+        const query = 'delete from t_file where id = ?';
+        const dataget = await queryAsync(query,[id_file]);
+        // const result = dataget
+
+        res.status(200).send({
+            message: 'success',
+            // hashed: hashedPassword,
+            result: dataget
+        });
+
+    }catch(error){
+        res.status(500).send({
+            message: 'Error in get user',
+            error: error.message
+        });
+        
+    }
+}
+
 module.exports = { 
-    postOcrDokumen,postOcrDokumenAll,getDokumenAll,postgpt,getResult,getfile,downloadSource,postgptgemini,getalldata
+    postOcrDokumen,postOcrDokumenAll,getDokumenAll,postgpt,getResult,getfile,downloadSource,postgptgemini,getalldata,deletefile
 };

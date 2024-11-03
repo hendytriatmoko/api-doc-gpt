@@ -79,6 +79,8 @@ router.post('/postgpt', upload.none(), dokumenController.postgpt)
 
 router.post('/postgptgemini', upload.none(), dokumenController.postgptgemini)
 
+router.post('/deletefile', upload.none(), dokumenController.deletefile)
+
 
 
 router.post('/postuniversitas', upload.none(), adminController.postuniversitas)
@@ -89,6 +91,8 @@ router.post('/deleteuniversitas', upload.none(), adminController.deleteuniversit
 
 router.get('/getguideline', upload.none(), adminController.getguideline)
 router.put('/putguideline', upload.single('file'), adminController.putguideline)
+
+
 
 
 
