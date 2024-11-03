@@ -96,7 +96,8 @@ router.post('/postfile', upload.fields([
   { name: 'file1', maxCount: 1 },
   { name: 'file2', maxCount: 1 },
   { name: 'file3', maxCount: 1 },
-  { name: 'file4', maxCount: 1 }
+  { name: 'file4', maxCount: 1 },
+  { name: 'file5', maxCount: 1 }
 ]), dokumenController.postOcrDokumenAll)
 
 // router.post('/adduser', upload.none(), userController.addUser)

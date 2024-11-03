@@ -156,8 +156,11 @@ async function postOcrDokumenAll (req, res) {
     berikut adalah soal tugas pembelajaran
     ${fileNames[2].teks ? fileNames[2].teks : '-'}
 
-    berikut adalah jawaban mahasiswa
+    berikut adalah pedoman penskoran
     ${fileNames[3].teks ? fileNames[3].teks : '-'}
+
+    berikut adalah jawaban mahasiswa
+    ${fileNames[4].teks ? fileNames[4].teks : '-'}
     
     berikut adalah yang akan saya minta
     1. berikan nilai skala 1-100 capaian pembelajarannya dengan aspek relevansi,kejelasan rumusan, keterukuran, kesesuaian dengan taksonomi bloom
@@ -182,6 +185,7 @@ async function postOcrDokumenAll (req, res) {
                 fileNames[1].filename, 
                 fileNames[2].filename, 
                 fileNames[3].filename, 
+                fileNames[4].filename, 
                 fileekstrak
             ], (err, result) => {
             if (err) {
