@@ -69,6 +69,8 @@ router.get('/listfile', upload.none(), dokumenController.getDokumenAll)
 
 router.get('/getfile', upload.none(), dokumenController.getfile)
 
+router.get('/getalldata', upload.none(), dokumenController.getalldata)
+
 
 router.get('/getresult', upload.none(), dokumenController.getResult)
 router.post('/download_file', upload.none(), dokumenController.downloadSource)

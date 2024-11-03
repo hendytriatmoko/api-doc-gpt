@@ -609,6 +609,63 @@ async function generateGptGemini(text) {
     }
 }
 
+async function getalldata(req,res){
+    try{
+        const queryAsync = promisify(db.query).bind(db);
+        const query = `select a.id 'id_user', a.nama 'nama_user',b.nama 'nama_universitas'  from t_user a
+        left join t_universitas b on a.id_universitas = b.id`;
+        const dataget = await queryAsync(query);
+
+        const id_user_list = dataget.map(item => item.id_user).join(`','`);
+
+        const queryfile = `select * from t_file where id_user in ('${id_user_list}')`;
+        console.log('ss',queryfile)
+        const datagetfile = await queryAsync(queryfile);
+
+        const id_file_list = datagetfile.map(item => item.id).join(`','`);
+
+        
+        const queryresult = `select id_file,type,file from t_result where id_file in ('${id_file_list}')`;
+        console.log('ss',queryresult)
+        const datagetresult = await queryAsync(queryresult);
+        
+        
+        for (let i = 0; i < datagetfile.length; i++) {
+            var data = []
+            for (let j = 0; j < datagetresult.length; j++) {
+                if (datagetfile[i].id === datagetresult[j].id_file) {
+                    data.push(datagetresult[j])
+                }
+            }
+            datagetfile[i].result = data
+        }
+
+        for (let i = 0; i < dataget.length; i++) {
+            var data = []
+            for (let j = 0; j < datagetfile.length; j++) {
+                if (dataget[i].id_user === datagetfile[j].id_user) {
+                    data.push(datagetfile[j])
+                }
+            }
+            dataget[i].file = data
+        }
+        const result = dataget
+
+        res.status(200).send({
+            message: 'success',
+            // hashed: hashedPassword,
+            result: dataget
+        });
+
+    }catch(error){
+        res.status(500).send({
+            message: 'Error in get user',
+            error: error.message
+        });
+        
+    }
+}
+
 module.exports = { 
-    postOcrDokumen,postOcrDokumenAll,getDokumenAll,postgpt,getResult,getfile,downloadSource,postgptgemini
+    postOcrDokumen,postOcrDokumenAll,getDokumenAll,postgpt,getResult,getfile,downloadSource,postgptgemini,getalldata
 };
