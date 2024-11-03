@@ -369,19 +369,15 @@ async function getResult(req,res){
     try{
 
     
-    //     const queryAsync = promisify(db.query).bind(db);
-    // const query = `SELECT a.file,c.id 'id_user',c.nama 'nama_user', d.nama 'nama_universitas' FROM t_result a
-    // left join t_file b on a.id_file = b.id
-    // left join t_user c on b.id_user = c.id
-    // left join t_universitas d on c.id_universitas = d.id
-    // WHERE file = '?'`
-    // // // Mendapatkan file_prompt berdasarkan id_file
-    // // // const query = 'SELECT file_prompt FROM t_file WHERE id = ?';
-    // const result = await queryAsync(query, [nama_file]);
+        const queryAsync = promisify(db.query).bind(db);
+    const query = `SELECT a.file,c.id 'id_user',c.nama 'nama_user', d.nama 'nama_universitas' FROM t_result a left join t_file b on a.id_file = b.id left join t_user c on b.id_user = c.id left join t_universitas d on c.id_universitas = d.id WHERE file = ?`
+    // // Mendapatkan file_prompt berdasarkan id_file
+    // // const query = 'SELECT file_prompt FROM t_file WHERE id = ?';
+    const result = await queryAsync(query, [nama_file]);
 
-    // if (result.length === 0) {
-    //     return res.status(404).json({ message: 'File not found.' });
-    // }
+    if (result.length === 0) {
+        return res.status(404).json({ message: 'File not found.' });
+    }
 
     // Mendapatkan path file dan membaca teks yang diekstraksi
     const filePath = path.join(__dirname, '../file/result', nama_file);
@@ -389,6 +385,7 @@ async function getResult(req,res){
     res.status(200).send({
         message: 'success',
         nama_file: nama_file,
+        result: result[0],
         text:extractedText
     });
     // db.query(query, [id_file], (err, result) => {
