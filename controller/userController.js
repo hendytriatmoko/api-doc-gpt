@@ -160,14 +160,14 @@ async function addUser (req, res) {
 }
 
 async function putuser(req,res){
-    const { id,nama,password } = req.body
+    const { id,nama,password,role,id_universitas } = req.body
 
     try{
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
         const queryAsync = promisify(db.query).bind(db);
-        const query = 'update t_user set nama = ?, password = ? where id = ?';
-        const dataget = await queryAsync(query, [nama,hashedPassword, id]);
+        const query = 'update t_user set nama = ?, password = ?, role = ?,id_universitas = ? where id = ?';
+        const dataget = await queryAsync(query, [nama,hashedPassword,role,id_universitas, id]);
         res.status(200).json(
             { 
                 message: 'User successfully updated',
