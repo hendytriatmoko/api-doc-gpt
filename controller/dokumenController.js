@@ -422,69 +422,95 @@ async function getfile(req,res){
 
     try{
         const queryAsync = promisify(db.query).bind(db);
+
+        const queryfile = `select * from t_file where id_user = ? order by updated_at desc`;
+        console.log('ss',queryfile)
+        const datagetfile = await queryAsync(queryfile, [id_user]);
+
+        const id_file_list = datagetfile.map(item => item.id).join(`','`);
+
         
-        // Mendapatkan file_prompt berdasarkan id_file
-        const query = `select 
-                        a.* ,
-                        b.id_file,
-                        b.file,
-                        b.datetime,
-                        b.type
-                        from t_file a 
-                        left join t_result b on a.id = b.id_file
-                    where a.id_user = ? order by a.updated_at,b.datetime desc`
-        const dataget = await queryAsync(query, [id_user]);
-        const result = dataget
+        const queryresult = `select * from t_result where id_file in ('${id_file_list}') order by datetime desc`;
+        console.log('ss',queryresult)
+        const datagetresult = await queryAsync(queryresult);
 
-        const resultfile = []
-        const resultgpt = []
-        for (let i = 0; i < result.length; i++) {
-            const isIdOneExists = resultfile.some(file => file.id === result[i].id);
-            if (isIdOneExists) {
-                // console.log('ID 1 already exists');
-            } else {
-                const data = {
-                    id: result[i].id,
-                    id_user: result[i].id_user,
-                    nama: result[i].nama,
-                    file1: result[i].file1,
-                    file2: result[i].file2,
-                    file3: result[i].file3,
-                    file4: result[i].file4,
-                    file5: result[i].file5,
-                    file_prompt: result[i].file_prompt,
-                    file_result: result[i].file_result,
-                    updated_at: result[i].updated_at,
-                    fileresult: []
+
+        for (let i = 0; i < datagetfile.length; i++) {
+            var data = []
+            for (let j = 0; j < datagetresult.length; j++) {
+                if (datagetfile[i].id === datagetresult[j].id_file) {
+                    data.push(datagetresult[j])
                 }
-                resultfile.push(data)
             }
-            const resgpt = {
-                id_file:result[i].id_file,
-                file: result[i].file,
-                type: result[i].type,
-                datetime:result[i].datetime
-            }
-            // if (data.id === resgpt.id_file) {
-            //     data.fileresult.push(resgpt)
-            // }
-
-
-            resultgpt.push(resgpt)
+            datagetfile[i].fileresult = data
         }
         
-        for (let i = 0; i < resultfile.length; i++) {
-            for (let j = 0; j < resultgpt.length; j++) {
-                if (resultfile[i].id === resultgpt[j].id_file) {
-                    resultfile[i].fileresult.push(resultgpt[j])
-                }
-            }
-        } 
+        // Mendapatkan file_prompt berdasarkan id_file
+        // const query = `select 
+        //                 a.* ,
+        //                 b.id_file,
+        //                 b.file,
+        //                 b.datetime,
+        //                 b.type
+        //                 from t_file a 
+        //                 left join t_result b on a.id = b.id_file
+        //             where a.id_user = ? order by a.updated_at desc`
+        // const query1 = `select * from t_file a
+        //         where a.id_user = ? order by a.updated_at desc`
+
+        
+        // const dataget = await queryAsync(query1, [id_user]);
+        // const result = dataget
+
+        // const resultfile = []
+        // const resultgpt = []
+        // for (let i = 0; i < result.length; i++) {
+        //     const isIdOneExists = resultfile.some(file => file.id === result[i].id);
+        //     if (isIdOneExists) {
+        //         // console.log('ID 1 already exists');
+        //     } else {
+        //         const data = {
+        //             id: result[i].id,
+        //             id_user: result[i].id_user,
+        //             nama: result[i].nama,
+        //             file1: result[i].file1,
+        //             file2: result[i].file2,
+        //             file3: result[i].file3,
+        //             file4: result[i].file4,
+        //             file5: result[i].file5,
+        //             file_prompt: result[i].file_prompt,
+        //             file_result: result[i].file_result,
+        //             updated_at: result[i].updated_at,
+        //             fileresult: []
+        //         }
+        //         resultfile.push(data)
+        //     }
+        //     const resgpt = {
+        //         id_file:result[i].id_file,
+        //         file: result[i].file,
+        //         type: result[i].type,
+        //         datetime:result[i].datetime
+        //     }
+        //     // if (data.id === resgpt.id_file) {
+        //     //     data.fileresult.push(resgpt)
+        //     // }
+
+
+        //     resultgpt.push(resgpt)
+        // }
+        
+        // for (let i = 0; i < resultfile.length; i++) {
+        //     for (let j = 0; j < resultgpt.length; j++) {
+        //         if (resultfile[i].id === resultgpt[j].id_file) {
+        //             resultfile[i].fileresult.push(resultgpt[j])
+        //         }
+        //     }
+        // } 
     
         res.status(200).send({
             message: 'success',
             id_user: id_user,
-            result: resultfile,
+            result: datagetfile,
         });
     }catch(error){
         res.status(400).send({
