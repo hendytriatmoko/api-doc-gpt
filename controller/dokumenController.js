@@ -371,7 +371,7 @@ async function generateGpt(text) {
 
         // Mengirimkan permintaan ke model GPT dengan streaming
         const stream = await openai.chat.completions.create({
-            model: "gpt-4", // Pastikan menggunakan model yang valid
+            model: "gpt-4o-mini", // Pastikan menggunakan model yang valid
             messages: [{ role: "user", content: text }],
             stream: true,
         }, { responseType: 'stream' });
