@@ -603,7 +603,7 @@ async function postgptgemini(req,res) {
         var extractedText = fs.readFileSync(filePath, 'utf8');
 
 
-        let output = await generateGptGemini(extractedText);
+        let {output,totalToken} = await generateGptGemini(extractedText);
 
 
 
@@ -613,9 +613,9 @@ async function postgptgemini(req,res) {
         fs.writeFileSync(outputFilePath, output.trim(), 'utf8');
 
         // Mengirimkan respons sukses
-        const queryInsert = 'insert into t_result (id_file,type,file) values (?,1,?)'
+        const queryInsert = 'insert into t_result (id_file,type,file,token_used) values (?,1,?,?)'
         // const queryUpdate = 'update t_file set file_result = ? where id = ?';
-        db.query(queryInsert, [id_file,fileresult], (err, result) => {
+        db.query(queryInsert, [id_file,fileresult,totalToken], (err, result) => {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
@@ -667,7 +667,8 @@ async function generateGptGemini(text) {
           });
           
           const data = response.data.candidates[0].content.parts[0].text
-          return data;
+          const totalToken = response.data.usageMetadata.totalTokenCount
+          return {data,totalToken};
           console.log('Response data:', data);
 
     } catch (error) {
