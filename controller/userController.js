@@ -188,7 +188,9 @@ async function putuser(req,res){
 async function getuser(req,res){
     try{
         const queryAsync = promisify(db.query).bind(db);
-        const query = 'select * from t_user';
+        const query = `select a.id,a.username,a.role,a.nama,a.id_universitas,b.nama 'nama_universitas',a.updated_at 
+        from t_user a
+        left join t_universitas b on a.id_universitas = b.id`;
         const dataget = await queryAsync(query);
         // const result = dataget
 
