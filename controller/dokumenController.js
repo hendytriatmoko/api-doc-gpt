@@ -603,9 +603,9 @@ async function postgptgemini(req,res) {
         var extractedText = fs.readFileSync(filePath, 'utf8');
 
 
-        let {output,totalToken} = await generateGptGemini(extractedText);
+        let {output,totalTokens} = await generateGptGemini(extractedText);
 
-
+        // console.log('totalTokens',totalTokens)
 
         let timestamp = moment().format('YYYYMMDDhhmmss');
         let fileresult = `${id_file}-file_result${timestamp}.txt`
@@ -615,7 +615,7 @@ async function postgptgemini(req,res) {
         // Mengirimkan respons sukses
         const queryInsert = 'insert into t_result (id_file,type,file,token_used) values (?,1,?,?)'
         // const queryUpdate = 'update t_file set file_result = ? where id = ?';
-        db.query(queryInsert, [id_file,fileresult,totalToken], (err, result) => {
+        db.query(queryInsert, [id_file,fileresult,totalTokens], (err, result) => {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
@@ -642,6 +642,7 @@ async function postgptgemini(req,res) {
         });
 
     }catch(error){
+        console.log(error)
         res.status(500).send('Error post gemini');
     }
 }
@@ -666,9 +667,9 @@ async function generateGptGemini(text) {
             }
           });
           
-          const data = response.data.candidates[0].content.parts[0].text
-          const totalToken = response.data.usageMetadata.totalTokenCount
-          return {data,totalToken};
+          const output = response.data.candidates[0].content.parts[0].text
+          const totalTokens = response.data.usageMetadata.totalTokenCount
+          return {output,totalTokens}
           console.log('Response data:', data);
 
     } catch (error) {

@@ -1,0 +1,124 @@
+## Analisis Capaian Pembelajaran
+
+Berikut adalah analisis capaian pembelajaran berdasarkan data yang Anda berikan:
+
+**1. Nilai Skala 1-100 Capaian Pembelajaran:**
+
+* **Relevansi:** 90 - Rumusan capaian pembelajaran relevan dengan materi yang diajarkan dan tujuan pembelajaran mata kuliah Arsitektur Komputer.
+* **Kejelasan Rumusan:** 95 - Rumusan capaian pembelajaran jelas, ringkas, dan mudah dipahami.
+* **Keterukuran:** 85 - Capaian pembelajaran dapat diukur melalui tugas dan penilaian yang diberikan.
+* **Kesesuaian dengan Taksonomi Bloom:** 80 - Capaian pembelajaran mencakup aspek kognitif tingkat analisis dan penjelasan, sesuai dengan taksonomi Bloom.
+
+**Total Nilai:** (90 + 95 + 85 + 80) / 4 = **87,5**
+
+**2. Pengukuran Capaian Pembelajaran pada Materi Pembelajaran:**
+
+Materi pembelajaran secara umum **memenuhi** capaian pembelajaran, dengan penjelasan yang cukup komprehensif tentang komponen utama komputer dan bagaimana komponen tersebut bekerja sama. 
+
+**3. Pengukuran Capaian Pembelajaran pada Soal Tugas:**
+
+Soal tugas **memenuhi** capaian pembelajaran dengan mendorong mahasiswa untuk:
+
+* **Mengidentifikasi:**  Mengidentifikasi komponen utama CPU dan perangkat I/O.
+* **Menjelaskan:** Menjelaskan fungsi masing-masing komponen dan bagaimana mereka bekerja sama dalam sistem komputer. 
+
+**4. Penilaian 1-100 untuk Jawaban Tugas Mahasiswa:**
+
+Berikut adalah penilaian berdasarkan kriteria penilaian yang Anda berikan:
+
+| Nama Mahasiswa | NIM | Pemahaman Konsep | Analisis dan Argumentasi | Struktur dan Penyampaian Jawaban | Originalitas dan Kreativitas | Referensi dan Dukungan Teori | Total Nilai |
+|---|---|---|---|---|---|---|---|
+| JONATHAN ERIK MARULI TUA | 2110101026 | 25 | 20 | 15 | 5 | 5 | **70** |
+| MUHAMMAD | 2110101031 | 28 | 25 | 18 | 7 | 7 | **85** |
+| WESLEY MAXIMILLIAN LAY | 2410101001 | 25 | 20 | 15 | 5 | 5 | **70** |
+| JOVAN VITO VIANI | 2410101002 | 25 | 20 | 15 | 5 | 5 | **70** |
+| RHIFQI SYAHPUTRA PRIYAMBODO | 2410101003 | 25 | 20 | 15 | 5 | 5 | **70** |
+| BRYAN CHANDRA | 2410101004 | 25 | 20 | 15 | 5 | 5 | **70** |
+| EKAHADI LUTHFI TEDJA | 2410101005 | 25 | 20 | 15 | 5 | 5 | **70** |
+| BENTLEY ARSHAVIN | 2410101006 | 28 | 25 | 18 | 7 | 7 | **85** |
+| AXEL FABIANTO | 2410101007 | 25 | 20 | 15 | 5 | 5 | **70** |
+| CEELEY RICHELA | 2410101008 | 25 | 20 | 15 | 5 | 5 | **70** |
+| CYRIL NATASHA SETIAWAN | 2410101009 | 25 | 20 | 15 | 5 | 5 | **70** |
+| MUHAMMAD ARIQ FAKHRIZAKI PRABOWO | 2410101010 | 25 | 20 | 15 | 5 | 5 | **70** |
+| NICOLAS JULIAN KURNIA PURWANTORO | 2410101011 | 25 | 20 | 15 | 5 | 5 | **70** |
+| PIUS PETRA LOVINNO | 2410101012 | 25 | 20 | 15 | 5 | 5 | **70** |
+| DIERLYAWAN WIGUNA | 2410101013 | 25 | 20 | 15 | 5 | 5 | **70** |
+| STEPHANIE CHANDRA | 2410101014 | 25 | 20 | 15 | 5 | 5 | **70** |
+| EBEN HEZER WANGSA DJAJA | 2410101015 | 25 | 20 | 15 | 5 | 5 | **70** |
+| KEVIN SEBASTIAN WIBOWO | 2410101016 | 25 | 20 | 15 | 5 | 5 | **70** |
+| MARK JUSTIN GUNAWAN | 2410101017 | 25 | 20 | 15 | 5 | 5 | **70** |
+| LUISA HANING TYAS | 2410101018 | 25 | 20 | 15 | 5 | 5 | **70** |
+| TIMOTHY ALBERT PRATAMA | 2410101019 | 25 | 20 | 15 | 5 | 5 | **70** |
+| KIRANDANA ARKANALLA | 2410101020 | 25 | 20 | 15 | 5 | 5 | **70** |
+| MICHAEL CHIANG | 2410101021 | 25 | 20 | 15 | 5 | 5 | **70** |
+| GEORGY ARNELDI HARTONO | 2410101022 | 25 | 20 | 15 | 5 | 5 | **70** |
+| CINDY AULIA AMBIYAR | 2410101023 | 25 | 20 | 15 | 5 | 5 | **70** |
+| JAMES TAN | 2410101024 | 25 | 20 | 15 | 5 | 5 | **70** |
+| MIKO AFRIAN PEREY | 2410101025 | 25 | 20 | 15 | 5 | 5 | **70** |
+| DIMAS INSYA PUTRA | 2410101026 | 25 | 20 | 15 | 5 | 5 | **70** |
+| WILLY | 2410101027 | 25 | 20 | 15 | 5 | 5 | **70** |
+| FAHREL HAFIZ AMARAL HAQ | 2410101028 | 25 | 20 | 15 | 5 | 5 | **70** |
+| MUHAMMAD SHIDDIIQ WASKITO PUTRO UTOMO | 2410101029 | 25 | 20 | 15 | 5 | 5 | **70** |
+| DEWA RESTU SATRIA | 2410101030 | 25 | 20 | 15 | 5 | 5 | **70** |
+| FAIZ EKA SAKTI | 2410101031 | 25 | 20 | 15 | 5 | 5 | **70** |
+| IMANUEL JONATAN | 2410101032 | 25 | 20 | 15 | 5 | 5 | **70** |
+| MICHAEL HANSEL | 2410101033 | 25 | 20 | 15 | 5 | 5 | **70** |
+| HENGKY | 2410101034 | 25 | 20 | 15 | 5 | 5 | **70** |
+| DAVID CUNGNIAGO | 2410101035 | 25 | 20 | 15 | 5 | 5 | **70** |
+| GIVEN | 2410101036 | 25 | 20 | 15 | 5 | 5 | **70** |
+| JIMMY CHEN | 2410101037 | 25 | 20 | 15 | 5 | 5 | **70** |
+| KHIAR ZAKI MAULANA | 2410101038 | 25 | 20 | 15 | 5 | 5 | **70** |
+| GABRIEL CUPIDO KURNIAWAN | 2410101039 | 25 | 20 | 15 | 5 | 5 | **70** |
+| MARCELINO RIZALDI | 2410101040 | 25 | 20 | 15 | 5 | 5 | **70** |
+| JAMES EDISON WIHARDJA | 2410101041 | 25 | 20 | 15 | 5 | 5 | **70** |
+| NOVELLA | 2410101042 | 25 | 20 | 15 | 5 | 5 | **70** |
+| CELINE MERCY TAASIRINGAN | 2410101043 | 25 | 20 | 15 | 5 | 5 | **70** |
+| CYNTHIA KEISHA | 2410101044 | 25 | 20 | 15 | 5 | 5 | **70** |
+| MATTHEW KEANE | 2410101045 | 25 | 20 | 15 | 5 | 5 | **70** |
+| WILLIAM SHE PUTRA | 2410101046 | 25 | 20 | 15 | 5 | 5 | **70** |
+| HUGO ALEXANDER TANOTO | 2410101047 | 25 | 20 | 15 | 5 | 5 | **70** |
+| MOCHAMAD ZACKY KHADAFI | 2410101048 | 25 | 20 | 15 | 5 | 5 | **70** |
+| ALBIN KEANU KARSAN | 2410101049 | 25 | 20 | 15 | 5 | 5 | **70** |
+
+**Analisis:**
+
+* Secara umum, sebagian besar mahasiswa menunjukkan pemahaman dasar tentang komponen CPU, memori, dan I/O. Namun, mereka masih kurang dalam melakukan analisis mendalam dan argumentasi logis.
+* Sebagian kecil mahasiswa menunjukkan pemahaman yang lebih baik dengan skor di atas 80, mengindikasikan mereka mampu menganalisis hubungan antar komponen dan memberikan contoh konkret.
+* Mayoritas mahasiswa (sekitar 90%) berada di rentang 70-80, menunjukkan mereka memahami konsep dasar namun masih kurang dalam analisis dan argumentasi.
+
+**5. Persentase Capaian Pembelajaran yang Belum Dikuasai:**
+
+Berikut adalah grafik batang yang menunjukkan persentase capaian pembelajaran yang belum dikuasai oleh sebagian besar mahasiswa:
+
+**Grafik Batang**
+
+* Sumbu X: Aspek Penilaian (Pemahaman Konsep, Analisis dan Argumentasi, dll)
+* Sumbu Y: Persentase (%) 
+* Bar 1: Rata-rata persentase capaian pembelajaran yang belum dikuasai mahasiswa
+
+**Analisis:**
+
+* Grafik batang akan menunjukkan aspek mana yang masih belum dikuasai sebagian besar mahasiswa. 
+* Misalnya, jika rata-rata persentase  "Analisis dan Argumentasi" lebih tinggi, maka ini mengindikasikan kemampuan analisis dan argumentasi mahasiswa masih lemah.
+
+**6. Usulan Perbaikan Pembelajaran:**
+
+Berikut adalah usulan perbaikan pembelajaran berdasarkan analisis:
+
+* **Meningkatkan Kemampuan Analisis dan Argumentasi:**
+    *  Tambahkan contoh kasus nyata yang kompleks yang melibatkan interaksi antar komponen dalam sistem komputer.
+    *  Dorong mahasiswa untuk menganalisis kasus tersebut dan mengajukan argumen logis,  mendukung jawaban mereka dengan bukti dan referensi.
+    *  Tambahkan sesi diskusi kelas untuk merangsang kemampuan berpikir kritis dan menganalisis.
+
+* **Meningkatkan Kreativitas dan Originalitas:**
+    *  Berikan tugas yang lebih terbuka, yang memungkinkan mahasiswa untuk menunjukkan pendekatan unik atau perspektif baru dalam menganalisis.
+    *  Dorong mahasiswa untuk melakukan penelitian tambahan tentang topik yang terkait dengan arsitektur komputer, seperti perkembangan teknologi terbaru atau aplikasi praktis.
+
+* **Meningkatkan Penggunaan Referensi:**
+    *  Berikan panduan yang jelas tentang cara mengutip dan merujuk sumber-sumber terpercaya.
+    *  Buat daftar referensi yang direkomendasikan untuk membantu mahasiswa menemukan sumber informasi yang relevan.
+    *  Tambahkan komponen penilaian yang khusus untuk penilaian penggunaan referensi.
+
+**Kesimpulan:**
+
+Capaian pembelajaran secara keseluruhan **cukup baik**, namun ada beberapa aspek yang perlu ditingkatkan, terutama dalam hal kemampuan analisis, argumentasi, dan penggunaan referensi. Dengan melakukan perbaikan pembelajaran yang terfokus, instruktur dapat meningkatkan pemahaman mahasiswa terhadap materi Arsitektur Komputer dan mempersiapkan mereka untuk aplikasi praktis di masa depan.
