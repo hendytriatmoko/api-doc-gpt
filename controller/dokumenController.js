@@ -309,7 +309,7 @@ async function postgpt(req, res) {
         var extractedText = fs.readFileSync(filePath, 'utf8');
 
         // Memanggil fungsi generateGpt untuk menghasilkan output
-        let output = await generateGpt(extractedText);
+        let {output,totalTokens} = await generateGpt(extractedText);
 
         let timestamp = moment().format('YYYYMMDDhhmmss');
         let fileresult = `${id_file}-file_result${timestamp}.txt`
@@ -317,9 +317,9 @@ async function postgpt(req, res) {
         fs.writeFileSync(outputFilePath, output.trim(), 'utf8');
 
         // Mengirimkan respons sukses
-        const queryInsert = 'insert into t_result (id_file,type,file) values (?,0,?)'
+        const queryInsert = 'insert into t_result (id_file,type,file,token_used) values (?,0,?,?)'
         // const queryUpdate = 'update t_file set file_result = ? where id = ?';
-        db.query(queryInsert, [id_file,fileresult], (err, result) => {
+        db.query(queryInsert, [id_file,fileresult,totalTokens], (err, result) => {
             if (err) {
                 return res.status(500).json({ error: err.message });
             }
@@ -341,27 +341,56 @@ async function postgpt(req, res) {
     }
 }
 
+// async function generateGpt(text) {
+//     try {
+//         // Mengirimkan permintaan ke model GPT
+//         const stream = await openai.chat.completions.create({
+//             model: "gpt-4o-mini", // Pastikan menggunakan model yang valid
+//             messages: [{ role: "user", content: text }],
+//             stream: true,
+//         }, { responseType: 'stream' });
+
+//         // Menggunakan streaming untuk menghasilkan respons
+//         let output = '';
+//         for await (const chunk of stream) {
+//             output += chunk.choices[0]?.delta?.content || "";
+//         }
+//         return output;
+
+//     } catch (error) {
+//         console.error("Terjadi kesalahan saat generate GPT:", error);
+//         throw new Error('Error generating GPT output.');
+//     }
+// }
+
 async function generateGpt(text) {
     try {
-        // Mengirimkan permintaan ke model GPT
-        const stream = await openai.chat.completions.create({
-            model: "gpt-4o-mini", // Pastikan menggunakan model yang valid
-            messages: [{ role: "user", content: text }],
-            stream: true,
-        }, { responseType: 'stream' });
+        // Mengirimkan permintaan ke model GPT tanpa batasan max_tokens
+        const response = await openai.chat.completions.create({
+            model: "gpt-4", // Pastikan menggunakan model yang valid
+            messages: [{ role: "user", content: text }]
+        });
 
-        // Menggunakan streaming untuk menghasilkan respons
-        let output = '';
-        for await (const chunk of stream) {
-            output += chunk.choices[0]?.delta?.content || "";
-        }
-        return output;
+        // Ambil konten dari respons
+        const output = response.choices[0].message.content;
+
+        // Dapatkan informasi token dari response.usage
+        const totalTokens = response.usage.total_tokens;
+        // const promptTokens = response.usage.prompt_tokens;
+        // const completionTokens = response.usage.completion_tokens;
+
+        // Return output dan total token
+        return {
+            output,
+            totalTokens
+        };
 
     } catch (error) {
         console.error("Terjadi kesalahan saat generate GPT:", error);
         throw new Error('Error generating GPT output.');
     }
 }
+
 
 async function getResult(req,res){
     const { nama_file } = req.query;
