@@ -5,7 +5,7 @@ const path = require('path');
 const moment = require('moment')
 const pdfParse = require('pdf-parse');
 const Tesseract = require('tesseract.js');
-const { Document } = require('docx');
+const { Document, uniqueId } = require('docx');
 const mammoth = require('mammoth');
 const bcrypt = require('bcrypt');
 const db = require('../database/config');
@@ -166,8 +166,13 @@ async function putuser(req,res){
         const saltRounds = 10;
         const hashedPassword = await bcrypt.hash(password, saltRounds);
         const queryAsync = promisify(db.query).bind(db);
-        const query = 'update t_user set nama = ?, password = ?, role = ?,id_universitas = ? where id = ?';
-        const dataget = await queryAsync(query, [nama,hashedPassword,role,id_universitas, id]);
+        if (password === '' || password === null || password === undefined) {
+            const query = 'update t_user set nama = ?, role = ?,id_universitas = ? where id = ?';
+            const dataget = await queryAsync(query, [nama,role,id_universitas, id]);
+        }else{
+            const query = 'update t_user set nama = ?, password = ?, role = ?,id_universitas = ? where id = ?';
+            const dataget = await queryAsync(query, [nama,hashedPassword,role,id_universitas, id]);
+        }
         res.status(200).json(
             { 
                 message: 'User successfully updated',
