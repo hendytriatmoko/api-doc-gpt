@@ -644,14 +644,14 @@ async function getalldata(req,res){
 
         const id_user_list = dataget.map(item => item.id_user).join(`','`);
 
-        const queryfile = `select * from t_file where id_user in ('${id_user_list}')`;
+        const queryfile = `select * from t_file where id_user in ('${id_user_list}') order by updated_at desc`;
         console.log('ss',queryfile)
         const datagetfile = await queryAsync(queryfile);
 
         const id_file_list = datagetfile.map(item => item.id).join(`','`);
 
         
-        const queryresult = `select id_file,type,file from t_result where id_file in ('${id_file_list}')`;
+        const queryresult = `select * from t_result where id_file in ('${id_file_list}') order by datetime desc`;
         console.log('ss',queryresult)
         const datagetresult = await queryAsync(queryresult);
         
