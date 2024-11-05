@@ -73,6 +73,9 @@ router.get('/getalldata', upload.none(), dokumenController.getalldata)
 
 
 router.get('/getresult', upload.none(), dokumenController.getResult)
+
+router.get('/gettokenused', upload.none(), dokumenController.gettokenused)
+
 router.post('/download_file', upload.none(), dokumenController.downloadSource)
 
 router.post('/postgpt', upload.none(), dokumenController.postgpt)

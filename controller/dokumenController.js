@@ -758,6 +758,28 @@ async function deletefile(req,res){
     }
 }
 
+async function gettokenused(req,res){
+    try{
+        const queryAsync = promisify(db.query).bind(db);
+        const query = `select type,sum(token_used) 'token_used' from t_result group by type`;
+        const dataget = await queryAsync(query);
+        // const result = dataget
+
+        res.status(200).send({
+            message: 'success',
+            // hashed: hashedPassword,
+            result: dataget
+        });
+
+    }catch(error){
+        res.status(500).send({
+            message: 'Error in get token',
+            error: error.message
+        });
+        
+    }
+}
+
 module.exports = { 
-    postOcrDokumen,postOcrDokumenAll,getDokumenAll,postgpt,getResult,getfile,downloadSource,postgptgemini,getalldata,deletefile
+    postOcrDokumen,postOcrDokumenAll,getDokumenAll,postgpt,getResult,getfile,downloadSource,postgptgemini,getalldata,deletefile,gettokenused
 };
