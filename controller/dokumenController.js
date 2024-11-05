@@ -761,14 +761,21 @@ async function deletefile(req,res){
 async function gettokenused(req,res){
     try{
         const queryAsync = promisify(db.query).bind(db);
-        const query = `select type,sum(token_used) 'token_used' from t_result group by type`;
+        const query = `select IF(sum(token_used) is null,0,sum(token_used)) 'token_used' from t_result where type = '0'`;
         const dataget = await queryAsync(query);
-        // const result = dataget
+
+        const query2 = `select IF(sum(token_used) is null,0,sum(token_used)) 'token_used' from t_result where type = '1'`;
+        const dataget2 = await queryAsync(query2);
+        // const result = dataget   
+        const result = {
+            gpt:dataget[0].token_used,
+            gemini:dataget2[0].token_used
+        }
 
         res.status(200).send({
             message: 'success',
             // hashed: hashedPassword,
-            result: dataget
+            result: result
         });
 
     }catch(error){
