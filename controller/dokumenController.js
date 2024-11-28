@@ -680,10 +680,12 @@ async function generateGptGemini(text) {
 }
 
 async function getalldata(req,res){
+    const { search } = req.query
     try{
         const queryAsync = promisify(db.query).bind(db);
+        const condition = search !== null || search !== '' ? `where a.nama like '%${search}%'` : ''
         const query = `select a.id 'id_user', a.nama 'nama_user',b.nama 'nama_universitas'  from t_user a
-        left join t_universitas b on a.id_universitas = b.id`;
+        left join t_universitas b on a.id_universitas = b.id ${condition}`;
         const dataget = await queryAsync(query);
 
         const id_user_list = dataget.map(item => item.id_user).join(`','`);

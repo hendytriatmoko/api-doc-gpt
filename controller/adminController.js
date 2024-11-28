@@ -44,9 +44,11 @@ async function postuniversitas(req,res) {
 }
 
 async function getuniversitas(req,res) {
+    const { search } = req.query
     try{
         const queryAsync = promisify(db.query).bind(db);
-        const query = 'select * from t_universitas order by nama asc';
+        const condition = search !== null || search !== '' ? `where nama like '%${search}%'` : ''
+        const query = `select * from t_universitas ${condition} order by nama asc`;
         const dataget = await queryAsync(query);
         // const result = dataget
 
