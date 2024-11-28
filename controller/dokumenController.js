@@ -38,9 +38,7 @@ async function postOcrDokumen (req, res) {
     const fileExtension = path.extname(file.filename).toLowerCase();
     let extractedText = '';
 
-    const queryAsync = promisify(db.query).bind(db);
-    const query = `select prompt from t_query where id = 1`;
-    const dataget = await queryAsync(query);
+    
 
 
     try{
@@ -150,6 +148,10 @@ async function postOcrDokumenAll (req, res) {
             };
         }
     }
+
+    const queryAsync = promisify(db.query).bind(db);
+    const query = `select prompt from t_query where id = 1`;
+    let dataget = await queryAsync(query);
 
     let dataPrompt = `
     berikut adalah capaian pembelajaran
