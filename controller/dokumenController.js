@@ -38,6 +38,10 @@ async function postOcrDokumen (req, res) {
     const fileExtension = path.extname(file.filename).toLowerCase();
     let extractedText = '';
 
+    const queryAsync = promisify(db.query).bind(db);
+    const query = `select prompt from t_query where id = 1`;
+    const dataget = await queryAsync(query);
+
 
     try{
         if (fileExtension === '.pdf') {
@@ -162,16 +166,8 @@ async function postOcrDokumenAll (req, res) {
 
     berikut adalah jawaban mahasiswa
     ${fileNames[4].teks ? fileNames[4].teks : '-'}
-    
-    berikut adalah yang akan saya minta
-    1. Berikan nilai skala 1-100 terhadap ketepatan rumusan capaian pembelajaran berdasarkan kata kerja operasional yang digunakan. Beri rekomendasi perbaikan capaian pembelajaran hanya untuk nilai di bawah 85. Apabila nilai sama dengan dan lebih dari 85 tidak perlu diberikan rekomendasi
-    2. Apakah materi pembelajaran dapat mengukur capaian pembelajaran? beri nilai 1-100 dan beri rekomendasi perbaikan materi pembelajaran untuk nilai di bawah 85
-    3. Apakah tugas dapat mengukur capaian pembelajaran? beri nilai 1-100 dan beri rekomendasi perbaikan tugas hanya untuk nilai di bawah 85.
-    4. Apakah rubrik atau kunci jawaban dapat digunakan sebagai pedoman untuk menilai jawaban mahasiswa? beri nilai 1-100 dan beri rekomendasi perbaikan rubrik untuk nilai di bawah 85.
-    5.  a. Hitung berapa jumlah mahasiswa yang menjawab tugas.
-        b. Berikan penilaian atas jawaban siswa untuk masing-masing mahasiswa dengan skala 1-100 dalam bentuk tabel untuk seluruh mahasiswa. 
-        c. Identifikasi materi pembelajaran yang belum dipahami mahasiswa dalam bentuk tabel. 
-        d. Berikan usulan perbaikan pembelajaran yang relevan kepada instruktur terkait capaian pembelajaran yang belum dikuasai oleh mahasiswa dalam bentuk tabel. 
+
+    ${dataget}
     `
     let timestamp = moment().format('YYYYMMDDhhmmss');
     let fileekstrak = `${user_id}-file_extracted${timestamp}.txt`
