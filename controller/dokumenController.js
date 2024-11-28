@@ -169,7 +169,7 @@ async function postOcrDokumenAll (req, res) {
     berikut adalah jawaban mahasiswa
     ${fileNames[4].teks ? fileNames[4].teks : '-'}
 
-    ${dataget}
+    ${dataget[0]}
     `
     let timestamp = moment().format('YYYYMMDDhhmmss');
     let fileekstrak = `${user_id}-file_extracted${timestamp}.txt`
