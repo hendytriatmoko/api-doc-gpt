@@ -635,12 +635,12 @@ async function postgptgemini(req,res) {
 
 
 
-        res.status(200).send({
-            message: 'success',
-            extractedText: output
-            // id_file: id_file,
-            // result: output
-        });
+        // res.status(200).send({
+        //     message: 'success',
+        //     extractedText: output
+        //     // id_file: id_file,
+        //     // result: output
+        // });
 
     }catch(error){
         console.log(error)
