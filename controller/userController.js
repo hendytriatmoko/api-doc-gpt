@@ -191,19 +191,34 @@ async function putuser(req,res){
 }
 
 async function getuser(req,res){
+    const { search } = req.query
+    console.log('search',search)
     try{
         const queryAsync = promisify(db.query).bind(db);
-        const query = `select a.id,a.username,a.role,a.nama,a.id_universitas,b.nama 'nama_universitas',a.updated_at 
-        from t_user a
-        left join t_universitas b on a.id_universitas = b.id`;
-        const dataget = await queryAsync(query);
+        if (search !== null || search !== '') {
+            let query = `select a.id,a.username,a.role,a.nama,a.id_universitas,b.nama 'nama_universitas',a.updated_at 
+            from t_user a
+            left join t_universitas b on a.id_universitas = b.id where a.nama like '%${search}%'`;
+            const dataget = await queryAsync(query);
+            res.status(200).send({
+                message: 'success',
+                // hashed: hashedPassword,
+                result: dataget
+            });
+        }else{
+            let query = `select a.id,a.username,a.role,a.nama,a.id_universitas,b.nama 'nama_universitas',a.updated_at 
+            from t_user a
+            left join t_universitas b on a.id_universitas = b.id`;
+            const dataget = await queryAsync(query);
+            res.status(200).send({
+                message: 'success',
+                // hashed: hashedPassword,
+                result: dataget
+            });
+        }
         // const result = dataget
 
-        res.status(200).send({
-            message: 'success',
-            // hashed: hashedPassword,
-            result: dataget
-        });
+        
 
     }catch(error){
         res.status(500).send({

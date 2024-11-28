@@ -459,12 +459,13 @@ async function getResult(req,res){
 }
 
 async function getfile(req,res){
-    const { id_user } = req.query;
+    const { id_user,search } = req.query;
+
 
     try{
         const queryAsync = promisify(db.query).bind(db);
-
-        const queryfile = `select * from t_file where id_user = ? order by updated_at desc`;
+        const condition = search !== null || search !== '' ? `and nama like '%${search}%'` : ''
+        const queryfile = `select * from t_file where id_user = ? ${condition} order by updated_at desc`;
         console.log('ss',queryfile)
         const datagetfile = await queryAsync(queryfile, [id_user]);
 
