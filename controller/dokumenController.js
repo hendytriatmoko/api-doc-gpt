@@ -157,19 +157,21 @@ async function postOcrDokumenAll (req, res) {
     berikut adalah soal tugas pembelajaran
     ${fileNames[2].teks ? fileNames[2].teks : '-'}
 
-    berikut adalah pedoman penskoran
+    berikut adalah rubrik atau kunci dari tugas pembelajaran
     ${fileNames[3].teks ? fileNames[3].teks : '-'}
 
     berikut adalah jawaban mahasiswa
     ${fileNames[4].teks ? fileNames[4].teks : '-'}
     
     berikut adalah yang akan saya minta
-    1. berikan nilai skala 1-100 capaian pembelajarannya dengan aspek relevansi,kejelasan rumusan, keterukuran, kesesuaian dengan taksonomi bloom
-    2. ukur capaian pembelajaran dari materi pembelajaran diatas
-    3. ukur capaian pembelajaran pada soal tugas
-    4. berikan penilaian 1-100 untuk masing masing mahasiswa pada jawaban tugas sertakan alasannya dan dalam bentuk tabel
-    5. identifikasi persentase capaian pembelajaran yang belum dikuasai oleh sebagian besar mahasiswa dalam grafik batang
-    6. berikan usulan perbaikan pembelajaran relevan pada instruktur terkait capaian pembelajaran yang belum dikuasai sebagian besar mahasiswa
+    1. Berikan nilai skala 1-100 terhadap ketepatan rumusan capaian pembelajaran berdasarkan kata kerja operasional yang digunakan. Beri rekomendasi perbaikan capaian pembelajaran hanya untuk nilai di bawah 85. Apabila nilai sama dengan dan lebih dari 85 tidak perlu diberikan rekomendasi
+    2. Apakah materi pembelajaran dapat mengukur capaian pembelajaran? beri nilai 1-100 dan beri rekomendasi perbaikan materi pembelajaran untuk nilai di bawah 85
+    3. Apakah tugas dapat mengukur capaian pembelajaran? beri nilai 1-100 dan beri rekomendasi perbaikan tugas hanya untuk nilai di bawah 85.
+    4. Apakah rubrik atau kunci jawaban dapat digunakan sebagai pedoman untuk menilai jawaban mahasiswa? beri nilai 1-100 dan beri rekomendasi perbaikan rubrik untuk nilai di bawah 85.
+    5.  a. Hitung berapa jumlah mahasiswa yang menjawab tugas.
+        b. Berikan penilaian atas jawaban siswa untuk masing-masing mahasiswa dengan skala 1-100 dalam bentuk tabel untuk seluruh mahasiswa. 
+        c. Identifikasi materi pembelajaran yang belum dipahami mahasiswa dalam bentuk tabel. 
+        d. Berikan usulan perbaikan pembelajaran yang relevan kepada instruktur terkait capaian pembelajaran yang belum dikuasai oleh mahasiswa dalam bentuk tabel. 
     `
     let timestamp = moment().format('YYYYMMDDhhmmss');
     let fileekstrak = `${user_id}-file_extracted${timestamp}.txt`
