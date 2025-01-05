@@ -149,9 +149,9 @@ async function postOcrDokumenAll (req, res) {
         }
     }
 
-    const queryAsync = promisify(db.query).bind(db);
-    const query = `select prompt from t_query where id = 1`;
-    let dataget = await queryAsync(query);
+    // const queryAsync = promisify(db.query).bind(db);
+    // const query = `select prompt from t_query where id = 1`;
+    // let dataget = await queryAsync(query);
 
     let dataPrompt = `
     berikut adalah capaian pembelajaran
@@ -169,8 +169,8 @@ async function postOcrDokumenAll (req, res) {
     berikut adalah jawaban mahasiswa
     ${fileNames[4].teks ? fileNames[4].teks : '-'}
 
-    ${dataget[0].prompt}
     `
+    // ${dataget[0].prompt}
     let timestamp = moment().format('YYYYMMDDhhmmss');
     let fileekstrak = `${user_id}-file_extracted${timestamp}.txt`
     const outputFilePath = path.join(__dirname, '../file/ekstrak', fileekstrak);
@@ -305,9 +305,19 @@ async function postgpt(req, res) {
             return res.status(404).json({ message: 'File not found.' });
         }
 
+        // const queryAsyncPrompt = promisify(db.query).bind(db);
+        const queryPrompt = `select prompt from t_query where id = 1`;
+        let dataPromptQuery = await queryAsync(queryPrompt);
+
         // Mendapatkan path file dan membaca teks yang diekstraksi
         const filePath = path.join(__dirname, '../file/ekstrak', result[0].file_prompt);
-        var extractedText = fs.readFileSync(filePath, 'utf8');
+        var extractedTextFile = fs.readFileSync(filePath, 'utf8');
+
+        var extractedText = `
+            ${extractedTextFile}
+
+            ${dataPromptQuery[0].prompt}
+        `
 
         // Memanggil fungsi generateGpt untuk menghasilkan output
         let {output,totalTokens} = await generateGpt(extractedText);
@@ -599,9 +609,18 @@ async function postgptgemini(req,res) {
             return res.status(404).json({ message: 'File not found.' });
         }
 
+        const queryPrompt = `select prompt from t_query where id = 1`;
+        let dataPromptQuery = await queryAsync(queryPrompt);
+
         // Mendapatkan path file dan membaca teks yang diekstraksi
         const filePath = path.join(__dirname, '../file/ekstrak', result[0].file_prompt);
-        var extractedText = fs.readFileSync(filePath, 'utf8');
+        var extractedTextFile = fs.readFileSync(filePath, 'utf8');
+
+        var extractedText = `
+            ${extractedTextFile}
+
+            ${dataPromptQuery[0].prompt}
+        `
 
 
         let {output,totalTokens} = await generateGptGemini(extractedText);
