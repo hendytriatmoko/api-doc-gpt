@@ -313,6 +313,10 @@ async function postgpt(req, res) {
         const filePath = path.join(__dirname, '../file/ekstrak', result[0].file_prompt);
         var extractedTextFile = fs.readFileSync(filePath, 'utf8');
 
+        let cleanedInput = extractedTextFile.replace(/\s+/g, " ");
+
+        let countNama = (cleanedInput.match(/nim:/gi) || []).length;
+
         var extractedText = `
             ${extractedTextFile}
 
@@ -322,10 +326,16 @@ async function postgpt(req, res) {
         // Memanggil fungsi generateGpt untuk menghasilkan output
         let {output,totalTokens} = await generateGpt(extractedText);
 
+        let outputNew = `
+            ${output}
+
+            Jumlah Mahasiswa Menjawab : ${countNama}
+        `
+
         let timestamp = moment().format('YYYYMMDDhhmmss');
         let fileresult = `${id_file}-file_result${timestamp}.txt`
         const outputFilePath = path.join(__dirname, '../file/result', fileresult);
-        fs.writeFileSync(outputFilePath, output.trim(), 'utf8');
+        fs.writeFileSync(outputFilePath, outputNew.trim(), 'utf8');
 
         // Mengirimkan respons sukses
         const queryInsert = 'insert into t_result (id_file,type,file,token_used) values (?,0,?,?)'
@@ -341,7 +351,7 @@ async function postgpt(req, res) {
             res.status(200).send({
                 message: 'success',
                 id_file: id_file,
-                result: output
+                result: outputNew
             });
         })
         
@@ -616,6 +626,10 @@ async function postgptgemini(req,res) {
         const filePath = path.join(__dirname, '../file/ekstrak', result[0].file_prompt);
         var extractedTextFile = fs.readFileSync(filePath, 'utf8');
 
+        let cleanedInput = extractedTextFile.replace(/\s+/g, " ");
+
+        let countNama = (cleanedInput.match(/nim:/gi) || []).length;
+
         var extractedText = `
             ${extractedTextFile}
 
@@ -625,12 +639,18 @@ async function postgptgemini(req,res) {
 
         let {output,totalTokens} = await generateGptGemini(extractedText);
 
+        let outputNew = `
+            ${output}
+
+            Jumlah Mahasiswa Menjawab : ${countNama}
+        `
+
         // console.log('totalTokens',totalTokens)
 
         let timestamp = moment().format('YYYYMMDDhhmmss');
         let fileresult = `${id_file}-file_result${timestamp}.txt`
         const outputFilePath = path.join(__dirname, '../file/result', fileresult);
-        fs.writeFileSync(outputFilePath, output.trim(), 'utf8');
+        fs.writeFileSync(outputFilePath, outputNew.trim(), 'utf8');
 
         // Mengirimkan respons sukses
         const queryInsert = 'insert into t_result (id_file,type,file,token_used) values (?,1,?,?)'
@@ -646,7 +666,7 @@ async function postgptgemini(req,res) {
             res.status(200).send({
                 message: 'success',
                 id_file: id_file,
-                result: output
+                result: outputNew
             });
         })
 
