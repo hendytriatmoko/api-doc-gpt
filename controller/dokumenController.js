@@ -315,7 +315,7 @@ async function postgpt(req, res) {
 
         let cleanedInput = extractedTextFile.replace(/\s+/g, " ");
 
-        let countNama = (cleanedInput.match(/nim:/gi) || []).length;
+        let countNama = (cleanedInput.match(/nim\s*:/gi) || []).length;
 
         var extractedText = `
             ${extractedTextFile}
@@ -628,7 +628,7 @@ async function postgptgemini(req,res) {
 
         let cleanedInput = extractedTextFile.replace(/\s+/g, " ");
 
-        let countNama = (cleanedInput.match(/nim:/gi) || []).length;
+        let countNama = (cleanedInput.match(/nim\s*:/gi) || []).length;
 
         var extractedText = `
             ${extractedTextFile}
